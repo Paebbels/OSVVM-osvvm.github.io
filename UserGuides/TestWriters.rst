@@ -63,7 +63,7 @@ produced by the :vhdlcode:`UartTx` verification component.
      Send(UartTxRec, X"4A") ;
      Send(UartTxRec, X"4B") ;
 
-.. figure:: images/TestWriters/Figure01.png
+.. figure:: ../_static/images/TestWriters/Figure01.png
    :width: 364px
    :name: FRAMEWORK/TestWriters/Figure1
 
@@ -87,7 +87,7 @@ the verification components and :vhdlcode:`TestCtrl` use VHDL records as an inte
 Connections between the verification components and the DUT are the DUT interfaces (such as UART, AxiStream, AXI4, SPI,
 and I2C).
 
-.. figure:: images/TestWriters/Figure02.png
+.. figure:: ../_static/images/TestWriters/Figure02.png
    :width: 547px
    :name: FRAMEWORK/TestWriters/Figure2
 
@@ -354,7 +354,7 @@ A scoreboard facilitates checking data when there is latency in the system. A sc
 from the stimulus generation process and checks the value when it is received by the check process, as shown in
 :ref:`figure 10 <FRAMEWORK/TestWriters/Figure10>`.
 
-.. figure:: images/TestWriters/Figure10.png
+.. figure:: ../_static/images/TestWriters/Figure10.png
    :width: 370px
    :name: FRAMEWORK/TestWriters/Figure10
 
@@ -660,7 +660,7 @@ calls :tclcode:`Simulate2Html` which in turn calls :tclcode:`Alert2Html` to conv
 first part of the detailed test report shown in :ref:`Figure 20 <FRAMEWORK/TestWriters/Figure20>`. The detailed test
 report is in the file :file:`./reports/"test-name".html`.
 
-.. figure:: images/TestWriters/Figure20.png
+.. figure:: ../_static/images/TestWriters/Figure20.png
    :width: 626px
    :name: FRAMEWORK/TestWriters/Figure20
 
@@ -679,7 +679,7 @@ YAML data structure into the second part of the detailed test report shown in
 :ref:`Figure 21 <FRAMEWORK/TestWriters/Figure21>`. The detailed test report is in the file
 :file:`./reports/"test-suite-name"/"test-case-name".html`.
 
-.. figure:: images/TestWriters/Figure21.png
+.. figure:: ../_static/images/TestWriters/Figure21.png
    :width: 508px
    :name: FRAMEWORK/TestWriters/Figure21
 
@@ -696,7 +696,7 @@ The call to :vhdlcode:`WriteAlertSummaryYaml` The OSVVM scripts as well as each 
 it is converted to both HTML and a JUnit XML file. A portion of the HTML based Test Suite report is shown in
 :ref:`Figure 22 <FRAMEWORK/TestWriters/Figure22>`. The build summary report is in the file :file:`./"build-name".html`.
 
-.. figure:: images/TestWriters/Figure22.png
+.. figure:: ../_static/images/TestWriters/Figure22.png
    :width: 624px
    :name: FRAMEWORK/TestWriters/Figure22
 

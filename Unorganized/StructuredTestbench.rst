@@ -41,7 +41,7 @@ waveforms produced by the :vhdlcode:`UartTx` verification component.
      Send(UartTxRec, X"4A") ;
      Send(UartTxRec, X"4B") ;
 
-.. figure:: images/StructuredTestbench/Figure01.png
+.. figure:: ../_static/images/StructuredTestbench/Figure01.png
    :width: 364px
    :name: FRAMEWORK/StructuredTestbench/Figure1
 
@@ -65,7 +65,7 @@ The OSVVM testbench framework looks identical to other frameworks, including Sys
 shown in :ref:`Figure 2 <FRAMEWORK/StructuredTestbench/Figure2>`. The test sequencer calls a sequence of transactions.
 The transactions in turn instruct the verification components to create a sequence of waveforms on the DUT interface.
 
-.. figure:: images/StructuredTestbench/Figure02.png
+.. figure:: ../_static/images/StructuredTestbench/Figure02.png
    :width: 412px
    :name: FRAMEWORK/StructuredTestbench/Figure2
 

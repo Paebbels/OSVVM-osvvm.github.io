@@ -25,7 +25,7 @@ block diagram for the :vhdlcode:`DpRam` is shown in :ref:`Figure 1 <FRAMEWORK/VC
 on all input signals (:vhdlcode:`AddrX`, :vhdlcode:`DataInX`, and :vhdlcode:`WriteX`) and optionally has a register on
 the output :vhdlcode:`DataOutX`.
 
-.. figure:: images/VCDevelopers/Figure01.png
+.. figure:: ../_static/images/VCDevelopers/Figure01.png
    :width: 502px
    :name: FRAMEWORK/VCDevelopers/Figure1
 
@@ -41,7 +41,7 @@ presenting Address (:vhdlcode:`AddrX`). On the next rising edge of clock the Add
 It has registers on all input signals (:vhdlcode:`AddrX`, :vhdlcode:`DataInX`, and :vhdlcode:`WriteX`) and optionally
 has a register on the output :vhdlcode:`DataOutX`.
 
-.. figure:: images/VCDevelopers/Figure02.png
+.. figure:: ../_static/images/VCDevelopers/Figure02.png
    :width: 476px
    :name: FRAMEWORK/VCDevelopers/Figure2
 

@@ -348,7 +348,7 @@ Count.
 In the :file:`sim` directory, the Build Summary Report, shown below, is in the file
 :file:`OsvvmLibraries_RunDemoTests.html`.
 
-.. figure:: images/Overview/Page04-1.png
+.. figure:: _static/images/Overview/Page04-1.png
    :width: 364px
 
    Build Summary Report
@@ -365,7 +365,7 @@ Build Status
 The Build Status, shown below, is in a table at the top of the Build Summary Report. If code coverage is run, there will
 be a link to the results at the bottom of the Build Summary Report.
 
-.. figure:: images/Overview/Page05-2.png
+.. figure:: _static/images/Overview/Page05-2.png
    :width: 324px
 
    Build Status
@@ -380,7 +380,7 @@ When running tests, test cases are grouped into test suites. A build can include
 see in the Build Summary Report is the Test Suite Summary. The figure below shows that this build includes the test
 suites Axi4Full, AxiStream, and UART.
 
-.. figure:: images/Overview/Page05-3.png
+.. figure:: _static/images/Overview/Page05-3.png
    :width: 446px
 
    Test Suite Summary
@@ -394,7 +394,7 @@ Test Case Summary
 The remainder of the Build Summary Report is Test Case Summary, shown below. There is a separate Test Case Summary for
 each test suite in the build.
 
-.. figure:: images/Overview/Page06-4.png
+.. figure:: _static/images/Overview/Page06-4.png
    :width: 541px
 
    Test Case Summary
@@ -441,7 +441,7 @@ table has links to the Alert Report (in this file), Functional Coverage Report (
 this file), a link to simulation results (if the simulation report is in HTML), and a link to any transcript files
 opened by OSVVM.
 
-.. figure:: images/Overview/Page07-5.png
+.. figure:: _static/images/Overview/Page07-5.png
    :width: 300px
 
    Test Information Link Table
@@ -455,7 +455,7 @@ Alert Report
 The Alert Report, shown below, provides detailed information for each :vhdlcode:`AlertLogID` that is used in a test
 case.
 
-.. figure:: images/Overview/Page07-6.png
+.. figure:: _static/images/Overview/Page07-6.png
    :width: 562px
 
    Alert Report
@@ -469,7 +469,7 @@ Functional Coverage Report(s)
 The Test Case Detailed Report contains a Functional Coverage Report, shown below, for each functional coverage model
 used in the test case. Note this report is not from the demo.
 
-.. figure:: images/Overview/Page08-7.png
+.. figure:: _static/images/Overview/Page08-7.png
    :width: 401px
 
    Functional Coverage Report
@@ -483,7 +483,7 @@ Scoreboard Report(s)
 The Test Case Detailed Report contains a Scoreboard Report, shown below, for each scoreboard model used in the test
 case.
 
-.. figure:: images/Overview/Page09-8.png
+.. figure:: _static/images/Overview/Page09-8.png
    :width: 283px
 
    Scoreboard Report
@@ -496,7 +496,7 @@ Test Case Transcript
 
 OSVVM's transcript utility facilitates collecting all test output into a single file, shown below.
 
-.. figure:: images/Overview/Page09-9.png
+.. figure:: _static/images/Overview/Page09-9.png
    :width: 562px
 
    Test Case Transcript
@@ -513,7 +513,7 @@ html file it is. OSVVM gives you the option to create either html (default), sho
 report, any place there is a triangle preceding text, pressing on the triangle will rotate it and either hide or reveal
 additional information.
 
-.. figure:: images/Overview/Page10-10.png
+.. figure:: _static/images/Overview/Page10-10.png
    :width: 562px
 
    HTML Simulator Transcript
