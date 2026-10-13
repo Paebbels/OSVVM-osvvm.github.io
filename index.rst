@@ -5,8 +5,7 @@
 
 .. only:: html
 
-   |SHIELD:github| |SHIELD:src-license| |SHIELD:ghp-doc| |SHIELD:doc-license| |br|
-   |SHIELD:tag| |SHIELD:github-action|
+   |SHIELD:github| |SHIELD:src-license| |SHIELD:ghp-doc| |SHIELD:doc-license| |SHIELD:tag| |SHIELD:github-action|
 
 .. # Written by hand until pyTooling.Sphinx' 'shields' directive supports generic badges (GitHub organization, colour).
 
