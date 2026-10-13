@@ -1,0 +1,18 @@
+[submodule "Scripts"]
+	path = Scripts
+	url = https://github.com/Paebbels/OSVVM-Scripts.git
+[submodule "osvvm"]
+	path = osvvm
+	url = https://github.com/Paebbels/OSVVM.git
+[submodule "Common"]
+	path = Common
+	url = https://github.com/Paebbels/OSVVM-Common.git
+[submodule "AXI4"]
+	path = AXI4
+	url = https://github.com/Paebbels/OSVVM-AXI4.git
+[submodule "CoSim"]
+	path = CoSim
+	url = https://github.com/Paebbels/OSVVM-CoSim.git
+[submodule "CoSimPCIe"]
+	path = CoSimPCIe
+	url = https://github.com/Paebbels/OSVVM-CoSimPCIe.git
