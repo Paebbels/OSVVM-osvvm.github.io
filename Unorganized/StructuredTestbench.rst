@@ -3,11 +3,6 @@
 OSVVM's Structured Testbench Framework
 ######################################
 
-.. _FRAMEWORK/StructuredTestbench/Overview:
-
-Overview
-********
-
 OSVVM's structured testbench framework is simple enough to use on small blocks. So simple in fact that a "Lite" or
 "Easy" approach is not needed. It is powerful enough to use on large, complex ASICs. This allows the same testbench
 architecture to be used for RTL, CORE, and System tests – this in turn facilitates reuse/pre-use of both verification

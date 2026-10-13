@@ -748,6 +748,16 @@ Get support for :acs:`OSVVM` at `osvvm.org <https://osvvm.org/>`__, or through t
       issue tracker, to discuss the proposed solution and how to integrate the changes into OSVVM's existing code.
 
 
+.. _ADOPTERS:
+
+Adopters
+********
+
+* `PoC - Pile of Cores <https://GitHub.com/VHDL/PoC>`__
+* `BigDesign <https://GitHub.com/Paebbels/BigDesign>`__
+* …
+
+
 .. _CONTRIBUTORS:
 
 Contributors
@@ -768,6 +778,8 @@ The OSVVM libraries (source code) are licensed under :doc:`Apache License 2.0 <S
 The accompanying documentation is licensed under
 :doc:`Creative Commons - Attribution 4.0 (CC-BY 4.0) <Scripts/doc/Doc-License>`.
 
+.. rubric:: Credits
+
 The OSVVM utility and verification component libraries were developed and are maintained by Jim Lewis of SynthWorks VHDL
 Training and the co-simulation libraries/features were developed and are maintained by Simon Southwell. These libraries
 evolved from methodology and packages developed for SynthWorks' VHDL Testbenches and verification class.
@@ -782,8 +794,8 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    Quick Start Guide <Scripts/doc/QuickStartGuide>
    Installation/Integration/Updates <Scripts/doc/Installation>
    Simulator Specifics <Scripts/doc/SimulatorSpecifics>
-   QuickReferenceGuides
-   ChangeLog
+   Overview/QuickReferenceGuides
+   Overview/ReleaseHistory
 
 .. raw:: latex
 
@@ -793,11 +805,11 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    :caption: User Guides
    :hidden:
 
-   Writing Tests using OSVVM <Framework/TestWriters>
-   Writing OSVVM Verification Components <Framework/VCDevelopers>
-   OSVVM Scripting Guide <Scripts/doc/UserGuide/index>
-   Regression Testing and Reports <Scripts/doc/Reports/index>
-   Model Independent Transaction Interface <Common/doc/MIT/index>
+   Writing Tests using OSVVM <UserGuides/TestWriters>
+   Writing OSVVM Verification Components <UserGuides/VCDevelopers>
+   Scripts/doc/UserGuide/index
+   Scripts/doc/Reports/index
+   Common/doc/MIT/index
 
 .. raw:: latex
 
@@ -819,7 +831,7 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    OsvvmGlobal Package <osvvm/doc/OsvvmGlobalPkg>
    ClockReset Package <osvvm/doc/ClockResetPkg>
    Vendor Coverage API Package <osvvm/doc/VendorCovApiPkg>
-   HelperPackages
+   UtilityLibrary/HelperPackages
 
 .. raw:: latex
 
@@ -831,15 +843,15 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
 
    AXI4 <AXI4/doc/Axi4>
    AXI4-Stream <AXI4/doc/AxiStream>
-   VC/AvalonST
-   VC/DpRam
-   VC/Ethernet
+   VerificationComponents/AvalonST
+   VerificationComponents/DpRam
+   VerificationComponents/Ethernet
    Interrupt Handler <Common/doc/InterruptHandler>
-   VC/SPI
-   VC/SpaceWireMonitor
-   VC/UART
-   VC/VideoBus
-   VC/Wishbone
+   VerificationComponents/SPI
+   VerificationComponents/SpaceWireMonitor
+   VerificationComponents/UART
+   VerificationComponents/VideoBus
+   VerificationComponents/Wishbone
 
 .. raw:: latex
 
@@ -862,7 +874,7 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
 
    TCL Command Reference <osvvm-scripts/osvvm>
    Scripts/doc/YAML/index
-   unittests/index
+   References/UnittestSummary
 
 .. raw:: latex
 
@@ -887,4 +899,4 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    :caption: Unorganized
    :hidden:
 
-   Structured Testbench Framework <Framework/StructuredTestbench>
+   Structured Testbench Framework <Unorganized/StructuredTestbench>

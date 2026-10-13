@@ -3,11 +3,6 @@
 OSVVM Verification Component Developer's Guide
 ##############################################
 
-.. _FRAMEWORK/VCDevelopers/Overview:
-
-Overview
-********
-
 This guide explores writing a verification component (VC) for a :vhdlcode:`DpRam` controller interface. The signaling on
 the :vhdlcode:`DpRam` controller is quite simple. This allows the focus to be on the aspects of creating an OSVVM style
 VC.

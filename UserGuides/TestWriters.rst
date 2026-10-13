@@ -3,11 +3,6 @@
 OSVVM Test Writers User Guide
 #############################
 
-.. _FRAMEWORK/TestWriters/Overview:
-
-Overview
-********
-
 Most people don't think of VHDL as a verification language. However, with the Open Source VHDL Verification Methodology
 (OSVVM) utility and verification component libraries it is. Using OSVVM we can create readable, powerful, and concise
 VHDL verification environments (testbenches) whose capabilities are similar to other verification languages, such as
