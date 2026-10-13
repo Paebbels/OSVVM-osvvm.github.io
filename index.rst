@@ -1,4 +1,4 @@
-.. image:: _static/logo_full_size.png
+.. image:: _static/logo-large.png
    :width: 500 px
    :align: center
    :target: https://github.com/OSVVM
