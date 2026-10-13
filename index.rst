@@ -52,94 +52,81 @@ have helped develop VHDL standards.
 We have used our expert VHDL skills to create
 advanced verification capabilities that provide:
 
-**A structured transaction-based framework**
+.. grid:: 1 2 3 4
 
--  Suitable for all verification tasks – from Unit/RTL to full
-   chip/system level tests.
--  Similar block diagram to SystemVerilog + UVM, except It plugs
-   together just like RTL
--  Facilitates re-use of VC and test cases through all levels of testing
-   (RTL to Full Chip)
+   .. grid-item-card:: A structured transaction-based framework
 
-**Model Independent Transaction (MIT) Library**
+      * Suitable for all verification tasks – from Unit/RTL to full chip/system level tests.
+      * Similar block diagram to SystemVerilog + UVM, except It plugs together just like RTL
+      * Facilitates re-use of VC and test cases through all levels of testing (RTL to Full Chip)
 
--  Defines Transaction API - procedures called by test case to build up
-   sequences of interface operations - such as send, get, write, read
--  Defines Transaction Interface - connects Verification Component to
-   Test Sequencer.
--  Used by all OSVVM defined VC
+   .. grid-item-card:: Model Independent Transaction (MIT) Library
 
-**Simplified Verification component (VC) development**
+      * Defines Transaction API - procedures called by test case to build up sequences of interface operations - such as
+        send, get, write, read
+      * Defines Transaction Interface - connects Verification Component to Test Sequencer.
+      * Used by all OSVVM defined VC
 
--  Uses MIT library = building block level re-use.
--  Makes development of a VC as simple as writing a procedure.
--  No OO or fork and join - uses natural concurrency of a VHDL
-   entity/architecture
--  Any VHDL engineer can do this
+   .. grid-item-card:: Simplified Verification component (VC) development
 
-**Readable Test cases**
+      * Uses MIT library = building block level re-use.
+      * Makes development of a VC as simple as writing a procedure.
+      * No OO or fork and join - uses natural concurrency of a VHDL entity/architecture
+      * Any VHDL engineer can do this
 
--  Simplified since all VC of a similar type implement a subset of the
-   MIT transaction calls (send, get, …)
--  Directed tests or complex, randomized tests can be written by any
-   VHDL engineer
--  Readable and reviewable by the whole team including software and
-   system engineers.
+   .. grid-item-card:: Readable Test cases
 
-**Unmatched Test Reports**
+      * Simplified since all VC of a similar type implement a subset of the MIT transaction calls (send, get, …)
+      * Directed tests or complex, randomized tests can be written by any VHDL engineer
+      * Readable and reviewable by the whole team including software and system engineers.
 
--  Build Summary - HTML (for humans) + JUnit XML (for CI tools)
--  Test Cases - HTML
--  Logs - HTML + plain text
--  Requirements Tracking - HTML + CSV
--  Helps Find and Debug issues faster
+   .. grid-item-card:: Unmatched Test Reports
 
-**Powerful verification utilities that make VHDL a full verification
-language, including**
+      * Build Summary - HTML (for humans) + JUnit XML (for CI tools)
+      * Test Cases - HTML
+      * Logs - HTML + plain text
+      * Requirements Tracking - HTML + CSV
+      * Helps Find and Debug issues faster
 
--  Constrained Random, Functional Coverage, Scoreboards, FIFOs, Memory
-   Models, error logging and reporting (alerts), and message filtering
-   (logs).
--  Capabilities are simple to use, concise, and work like built-in
-   language features.
+   .. grid-item-card:: Powerful verification utilities that make VHDL a full verification language, including
 
-**Requirements Tracking**
+      * Constrained Random, Functional Coverage, Scoreboards, FIFOs, Memory Models, error logging and reporting
+        (alerts), and message filtering (logs).
+      * Capabilities are simple to use, concise, and work like built-in language features.
 
--  Tracked using both OSVVM's affirmations and functional coverage
--  Tracks a count of each requirement and not just a boolean type check.
+   .. grid-item-card:: Requirements Tracking
 
-**A Common Scripting API**
+      * Tracked using both OSVVM's affirmations and functional coverage
+      * Tracks a count of each requirement and not just a boolean type check.
 
--  Same script runs all simulators – including GHDL, NVC, Aldec
-   Riviera-PRO and ActiveHDL, Siemens Questa and ModelSim, Synopsys VCS,
-   Cadence Xcelium, and Xilinx XSIM.
--  Is an API on top of Tcl
--  Most scripts are just slightly more than a list of files
--  Can run Tcl when you need it - usually no Tcl is required
+   .. grid-item-card:: A Common Scripting API
 
-**Free, Open Source Verification Components include**
+      * Same script runs all simulators – including GHDL, NVC, Aldec Riviera-PRO and ActiveHDL, Siemens Questa and
+        ModelSim, Synopsys VCS, Cadence Xcelium, and Xilinx XSIM.
+      * Is an API on top of Tcl
+      * Most scripts are just slightly more than a list of files
+      * Can run Tcl when you need it - usually no Tcl is required
 
--  AXI Full and Lite, AxiStream, Wishbone, UART, xMII, SPI, DpRam,
-   VideoBus.
+   .. grid-item-card:: Free, Open Source Verification Components include
 
-**Co-simulation**
+      * AXI Full and Lite, AxiStream, Wishbone, UART, xMII, SPI, DpRam, VideoBus.
 
--  Supports running software (C++) in a hardware simulation environment.
--  Write test cases in C++
--  Run C++ models such as instruction set simulators
+   .. grid-item-card:: Co-simulation
 
-**Architected by a long-time IEEE VHDL working group contributor**
+      * Supports running software (C++) in a hardware simulation environment.
+      * Write test cases in C++
+      * Run C++ models such as instruction set simulators
 
--  So expect better VHDL implementations.
+   .. grid-item-card:: Architected by a long-time IEEE VHDL working group contributor
 
-**It is Free, Open Source under APACHE 2.0**
+      * So expect better VHDL implementations.
 
--  Upgrades an ordinary VHDL license to a full featured verification
-   capabilities
--  `On GitHub <https://github.com/osvvm/OsvvmLibraries>`__ and IEEE Open
-   Source.
--  We accept issues and pull requests on GitHub.
--  Join us.
+   .. grid-item-card:: It is Free, Open Source under APACHE 2.0
+
+      * Upgrades an ordinary VHDL license to a full featured verification capabilities
+      * `On GitHub <https://github.com/osvvm/OsvvmLibraries>`__ and IEEE Open Source.
+      * We accept issues and pull requests on GitHub.
+      * Join us.
 
 **Get similar verification capabilities to SystemVerilog + UVM without needing OO.**
 
