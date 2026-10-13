@@ -1,7 +1,7 @@
-.. _NEWS:
+.. _CHANGELOG:
 
-News
-####
+Change Log
+##########
 
 Latest blog posts and news are available at the `OSVVM Blog <https://osvvm.org/blog>`__; the changes of each release
 are in the ``CHANGELOG.md`` files of OSVVM's repositories, linked from OsvvmLibraries'
@@ -12,12 +12,12 @@ collects all OSVVM repositories as Git submodules. Earlier releases are releases
 (`OSVVM/OSVVM <https://github.com/OSVVM/OSVVM>`__).
 
 
-.. _NEWS/2026:
+.. _CHANGELOG/2026:
 
 2026
 ****
 
-.. _NEWS/2026.09:
+.. _CHANGELOG/2026.09:
 
 2026.09
 =======
@@ -47,7 +47,7 @@ Gilda Radner taught us, "...it is always something ...". OSVVM release 2026.09 a
 -  When simulate finishes, in tcl, $::osvvm::TestCaseStatus holds simulate completion status (PASSED, FAILED, ...)
 -  Fixed file name case sensitivity issue in CoSim \*.pro file (only impacts usage on Linux/Unix)
 
-.. _NEWS/2026.08:
+.. _CHANGELOG/2026.08:
 
 2026.08
 =======
@@ -70,7 +70,7 @@ OSVVM release 2026.08 adds the following
 
 `For more details, See my blog post on OSVVM.org <https://osvvm.org/archives/2994>`__
 
-.. _NEWS/2026.05:
+.. _CHANGELOG/2026.05:
 
 2026.05
 =======
@@ -188,7 +188,7 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
      WaitForClock(ManagerRec, 0) ;
      SetAxi4Options(ManagerRec, WRITE_RESPONSE_READY_DELAY_CYCLES, 2) ;
 
-.. _NEWS/2026.01:
+.. _CHANGELOG/2026.01:
 
 2026.01
 =======
@@ -290,12 +290,12 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 -  Yaml updates to better collaborate with https://github.com/edaa-org/pyEDAA.OSVVM
 
 
-.. _NEWS/2025:
+.. _CHANGELOG/2025:
 
 2025
 ****
 
-.. _NEWS/2025.06a:
+.. _CHANGELOG/2025.06a:
 
 2025.06a
 ========
@@ -303,7 +303,7 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2025-09-21
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2025.06a>`__
 
-.. _NEWS/2025.06:
+.. _CHANGELOG/2025.06:
 
 2025.06
 =======
@@ -313,9 +313,9 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 
 .. attention::
 
-   The scripts in this release have some issues. Please use :ref:`2025.06a <NEWS/2025.06a>` instead.
+   The scripts in this release have some issues. Please use :ref:`2025.06a <CHANGELOG/2025.06a>` instead.
 
-.. _NEWS/2025.04:
+.. _CHANGELOG/2025.04:
 
 2025.04
 =======
@@ -323,7 +323,7 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2025-05-06
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2025.04>`__
 
-.. _NEWS/2025.02:
+.. _CHANGELOG/2025.02:
 
 2025.02
 =======
@@ -332,12 +332,12 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2025.02>`__
 
 
-.. _NEWS/2024:
+.. _CHANGELOG/2024:
 
 2024
 ****
 
-.. _NEWS/2024.11:
+.. _CHANGELOG/2024.11:
 
 2024.11
 =======
@@ -345,7 +345,7 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2024-12-07
 :Source: `Git tag 2024.11 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.11>`__
 
-.. _NEWS/2024.09:
+.. _CHANGELOG/2024.09:
 
 2024.09
 =======
@@ -353,7 +353,7 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2024-09-04
 :Source: `Git tag 2024.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.09>`__
 
-.. _NEWS/2024.07:
+.. _CHANGELOG/2024.07:
 
 2024.07
 =======
@@ -435,7 +435,7 @@ The 2024.07 release adds:
    -  Cadence Xcelium 2024.03 - passes osvvm library internal tests, but does not pass the OSVVM public tests (for OSVVM VC)
    -  Xilinx XSIM 2024.1 - passes osvvm library internal tests, but does not pass the OSVVM public tests (for OSVVM VC)
 
-.. _NEWS/2024.05b:
+.. _CHANGELOG/2024.05b:
 
 2024.05b
 ========
@@ -443,7 +443,7 @@ The 2024.07 release adds:
 :Released: 2024-06-10
 :Source: `Git tag 2024.05b <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05b>`__
 
-.. _NEWS/2024.05a:
+.. _CHANGELOG/2024.05a:
 
 2024.05a
 ========
@@ -451,7 +451,7 @@ The 2024.07 release adds:
 :Released: 2024-05-30
 :Source: `Git tag 2024.05a <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05a>`__
 
-.. _NEWS/2024.05:
+.. _CHANGELOG/2024.05:
 
 2024.05
 =======
@@ -459,7 +459,7 @@ The 2024.07 release adds:
 :Released: 2024-05-28
 :Source: `Git tag 2024.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05>`__
 
-.. _NEWS/2024.03a:
+.. _CHANGELOG/2024.03a:
 
 2024.03a
 ========
@@ -467,7 +467,7 @@ The 2024.07 release adds:
 :Released: 2024-05-02
 :Source: `Git tag 2024.03a <https://github.com/OSVVM/OsvvmLibraries/tree/2024.03a>`__
 
-.. _NEWS/2024.03:
+.. _CHANGELOG/2024.03:
 
 2024.03
 =======
@@ -476,12 +476,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2024.03 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.03>`__
 
 
-.. _NEWS/2023:
+.. _CHANGELOG/2023:
 
 2023
 ****
 
-.. _NEWS/2023.09a:
+.. _CHANGELOG/2023.09a:
 
 2023.09a
 ========
@@ -489,7 +489,7 @@ The 2024.07 release adds:
 :Released: 2023-10-03
 :Source: `Git tag 2023.09a <https://github.com/OSVVM/OsvvmLibraries/tree/2023.09a>`__
 
-.. _NEWS/2023.09:
+.. _CHANGELOG/2023.09:
 
 2023.09
 =======
@@ -497,7 +497,7 @@ The 2024.07 release adds:
 :Released: 2023-09-29
 :Source: `Git tag 2023.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.09>`__
 
-.. _NEWS/2023.07:
+.. _CHANGELOG/2023.07:
 
 2023.07
 =======
@@ -505,7 +505,7 @@ The 2024.07 release adds:
 :Released: 2023-07-25
 :Source: `Git tag 2023.07 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.07>`__
 
-.. _NEWS/2023.05:
+.. _CHANGELOG/2023.05:
 
 2023.05
 =======
@@ -513,7 +513,7 @@ The 2024.07 release adds:
 :Released: 2023-06-11
 :Source: `Git tag 2023.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.05>`__
 
-.. _NEWS/2023.04:
+.. _CHANGELOG/2023.04:
 
 2023.04
 =======
@@ -521,7 +521,7 @@ The 2024.07 release adds:
 :Released: 2023-04-04
 :Source: `Git tag 2023.04 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.04>`__
 
-.. _NEWS/2023.01:
+.. _CHANGELOG/2023.01:
 
 2023.01
 =======
@@ -530,12 +530,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2023.01 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.01>`__
 
 
-.. _NEWS/2022:
+.. _CHANGELOG/2022:
 
 2022
 ****
 
-.. _NEWS/2022.12:
+.. _CHANGELOG/2022.12:
 
 2022.12
 =======
@@ -543,7 +543,7 @@ The 2024.07 release adds:
 :Released: 2022-12-18
 :Source: `Git tag 2022.12 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.12>`__
 
-.. _NEWS/2022.11:
+.. _CHANGELOG/2022.11:
 
 2022.11
 =======
@@ -551,7 +551,7 @@ The 2024.07 release adds:
 :Released: 2022-11-25
 :Source: `Git tag 2022.11 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.11>`__
 
-.. _NEWS/2022.10:
+.. _CHANGELOG/2022.10:
 
 2022.10
 =======
@@ -559,7 +559,7 @@ The 2024.07 release adds:
 :Released: 2022-11-04
 :Source: `Git tag 2022.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.10>`__
 
-.. _NEWS/2022.09:
+.. _CHANGELOG/2022.09:
 
 2022.09
 =======
@@ -567,7 +567,7 @@ The 2024.07 release adds:
 :Released: 2022-09-11
 :Source: `Git tag 2022.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.09>`__
 
-.. _NEWS/2022.08b:
+.. _CHANGELOG/2022.08b:
 
 2022.08b
 ========
@@ -575,7 +575,7 @@ The 2024.07 release adds:
 :Released: 2022-08-20
 :Source: `Git tag 2022.08b <https://github.com/OSVVM/OsvvmLibraries/tree/2022.08b>`__
 
-.. _NEWS/2022.08:
+.. _CHANGELOG/2022.08:
 
 2022.08
 =======
@@ -583,7 +583,7 @@ The 2024.07 release adds:
 :Released: 2022-08-07
 :Source: `Git tag 2022.08 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.08>`__
 
-.. _NEWS/2022.06a:
+.. _CHANGELOG/2022.06a:
 
 2022.06a
 ========
@@ -591,7 +591,7 @@ The 2024.07 release adds:
 :Released: 2022-07-29
 :Source: `Git tag 2022.06a <https://github.com/OSVVM/OsvvmLibraries/tree/2022.06a>`__
 
-.. _NEWS/2022.06:
+.. _CHANGELOG/2022.06:
 
 2022.06
 =======
@@ -599,7 +599,7 @@ The 2024.07 release adds:
 :Released: 2022-07-21
 :Source: `Git tag 2022.06 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.06>`__
 
-.. _NEWS/2022.05d:
+.. _CHANGELOG/2022.05d:
 
 2022.05d
 ========
@@ -607,7 +607,7 @@ The 2024.07 release adds:
 :Released: 2022-06-20
 :Source: `Git tag 2022.05d <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05d>`__
 
-.. _NEWS/2022.05c:
+.. _CHANGELOG/2022.05c:
 
 2022.05c
 ========
@@ -615,7 +615,7 @@ The 2024.07 release adds:
 :Released: 2022-06-14
 :Source: `Git tag 2022.05c <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05c>`__
 
-.. _NEWS/2022.05b:
+.. _CHANGELOG/2022.05b:
 
 2022.05b
 ========
@@ -623,7 +623,7 @@ The 2024.07 release adds:
 :Released: 2022-06-09
 :Source: `Git tag 2022.05b_ <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05b_>`__
 
-.. _NEWS/2022.05:
+.. _CHANGELOG/2022.05:
 
 2022.05
 =======
@@ -631,7 +631,7 @@ The 2024.07 release adds:
 :Released: 2022-05-31
 :Source: `Git tag 2022.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05>`__
 
-.. _NEWS/2022.04:
+.. _CHANGELOG/2022.04:
 
 2022.04
 =======
@@ -639,7 +639,7 @@ The 2024.07 release adds:
 :Released: 2022-04-28
 :Source: `Git tag 2022.04 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.04>`__
 
-.. _NEWS/2022.03:
+.. _CHANGELOG/2022.03:
 
 2022.03
 =======
@@ -647,7 +647,7 @@ The 2024.07 release adds:
 :Released: 2022-04-03
 :Source: `Git tag 2022.03 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.03>`__
 
-.. _NEWS/2022.02:
+.. _CHANGELOG/2022.02:
 
 2022.02
 =======
@@ -655,7 +655,7 @@ The 2024.07 release adds:
 :Released: 2022-02-24
 :Source: `Git tag 2022.02 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.02>`__
 
-.. _NEWS/2022.01:
+.. _CHANGELOG/2022.01:
 
 2022.01
 =======
@@ -664,12 +664,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2022.01 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.01>`__
 
 
-.. _NEWS/2021:
+.. _CHANGELOG/2021:
 
 2021
 ****
 
-.. _NEWS/2021.12:
+.. _CHANGELOG/2021.12:
 
 2021.12
 =======
@@ -677,7 +677,7 @@ The 2024.07 release adds:
 :Released: 2021-12-29
 :Source: `Git tag 2021.12 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.12>`__
 
-.. _NEWS/2021.11:
+.. _CHANGELOG/2021.11:
 
 2021.11
 =======
@@ -685,7 +685,7 @@ The 2024.07 release adds:
 :Released: 2021-12-03
 :Source: `Git tag 2021.11 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.11>`__
 
-.. _NEWS/2021.10:
+.. _CHANGELOG/2021.10:
 
 2021.10
 =======
@@ -693,7 +693,7 @@ The 2024.07 release adds:
 :Released: 2021-11-14
 :Source: `Git tag 2021.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.10>`__
 
-.. _NEWS/2021.09:
+.. _CHANGELOG/2021.09:
 
 2021.09
 =======
@@ -701,7 +701,7 @@ The 2024.07 release adds:
 :Released: 2021-09-24
 :Source: `Git tag 2021.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.09>`__
 
-.. _NEWS/2021.07:
+.. _CHANGELOG/2021.07:
 
 2021.07
 =======
@@ -709,7 +709,7 @@ The 2024.07 release adds:
 :Released: 2021-08-04
 :Source: `Git tag 2021.07 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.07>`__
 
-.. _NEWS/2021.06:
+.. _CHANGELOG/2021.06:
 
 2021.06
 =======
@@ -717,7 +717,7 @@ The 2024.07 release adds:
 :Released: 2021-06-30
 :Source: `Git tag 2021.06 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.06>`__
 
-.. _NEWS/2021.02:
+.. _CHANGELOG/2021.02:
 
 2021.02
 =======
@@ -726,12 +726,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2021.02 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.02>`__
 
 
-.. _NEWS/2020:
+.. _CHANGELOG/2020:
 
 2020
 ****
 
-.. _NEWS/2020.12a:
+.. _CHANGELOG/2020.12a:
 
 2020.12a
 ========
@@ -739,7 +739,7 @@ The 2024.07 release adds:
 :Released: 2021-01-04
 :Source: `Git tag 2020.12a <https://github.com/OSVVM/OsvvmLibraries/tree/2020.12a>`__
 
-.. _NEWS/2020.12:
+.. _CHANGELOG/2020.12:
 
 2020.12
 =======
@@ -747,7 +747,7 @@ The 2024.07 release adds:
 :Released: 2020-12-31
 :Source: `Git tag 2020.12 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.12>`__
 
-.. _NEWS/2020.10:
+.. _CHANGELOG/2020.10:
 
 2020.10
 =======
@@ -755,7 +755,7 @@ The 2024.07 release adds:
 :Released: 2020-11-22
 :Source: `Git tag 2020.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.10>`__
 
-.. _NEWS/2020.08a:
+.. _CHANGELOG/2020.08a:
 
 2020.08a
 ========
@@ -763,7 +763,7 @@ The 2024.07 release adds:
 :Released: 2020-09-23
 :Source: `Git tag 2020.08a <https://github.com/OSVVM/OsvvmLibraries/tree/2020.08a>`__
 
-.. _NEWS/2020.08:
+.. _CHANGELOG/2020.08:
 
 2020.08
 =======
@@ -771,7 +771,7 @@ The 2024.07 release adds:
 :Released: 2020-09-01
 :Source: `Git tag 2020.08 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.08>`__
 
-.. _NEWS/2020.07:
+.. _CHANGELOG/2020.07:
 
 2020.07
 =======
@@ -779,7 +779,7 @@ The 2024.07 release adds:
 :Released: 2020-07-29
 :Source: `Git tag 2020.07 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.07>`__
 
-.. _NEWS/2020.05:
+.. _CHANGELOG/2020.05:
 
 2020.05
 =======
@@ -788,12 +788,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2020.05 <https://github.com/OSVVM/OSVVM/tree/2020.05>`__
 
 
-.. _NEWS/2018:
+.. _CHANGELOG/2018:
 
 2018
 ****
 
-.. _NEWS/2018.04:
+.. _CHANGELOG/2018.04:
 
 2018.04
 =======
@@ -802,12 +802,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2018.04 <https://github.com/OSVVM/OSVVM/tree/2018.04>`__
 
 
-.. _NEWS/2017:
+.. _CHANGELOG/2017:
 
 2017
 ****
 
-.. _NEWS/2017.05:
+.. _CHANGELOG/2017.05:
 
 2017.05
 =======
@@ -816,12 +816,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2017.05 <https://github.com/OSVVM/OSVVM/tree/2017.05>`__
 
 
-.. _NEWS/2016:
+.. _CHANGELOG/2016:
 
 2016
 ****
 
-.. _NEWS/2016.11:
+.. _CHANGELOG/2016.11:
 
 2016.11
 =======
@@ -829,7 +829,7 @@ The 2024.07 release adds:
 :Released: 2016-12-08
 :Source: `Git tag 2016.11 <https://github.com/OSVVM/OSVVM/tree/2016.11>`__
 
-.. _NEWS/2016.01:
+.. _CHANGELOG/2016.01:
 
 2016.01
 =======
@@ -838,19 +838,19 @@ The 2024.07 release adds:
 :Source: `Git tag 2016.01_Release <https://github.com/OSVVM/OSVVM/tree/2016.01_Release>`__
 
 
-.. _NEWS/2015:
+.. _CHANGELOG/2015:
 
 2015
 ****
 
-.. _NEWS/2015.06:
+.. _CHANGELOG/2015.06:
 
 2015.06
 =======
 
 :Source: `Git tag 2015.06 <https://github.com/OSVVM/OSVVM/tree/2015.06>`__
 
-.. _NEWS/2015.03:
+.. _CHANGELOG/2015.03:
 
 2015.03
 =======
@@ -858,19 +858,19 @@ The 2024.07 release adds:
 :Source: `Git tag 2015.03 <https://github.com/OSVVM/OSVVM/tree/2015.03>`__
 
 
-.. _NEWS/2014:
+.. _CHANGELOG/2014:
 
 2014
 ****
 
-.. _NEWS/2014.07a:
+.. _CHANGELOG/2014.07a:
 
 2014.07a
 ========
 
 :Source: `Git tag 2014.07a <https://github.com/OSVVM/OSVVM/tree/2014.07a>`__
 
-.. _NEWS/2014.01:
+.. _CHANGELOG/2014.01:
 
 2014.01
 =======
@@ -878,12 +878,12 @@ The 2024.07 release adds:
 :Source: `Git tag 2014.01 <https://github.com/OSVVM/OSVVM/tree/2014.01>`__
 
 
-.. _NEWS/2013:
+.. _CHANGELOG/2013:
 
 2013
 ****
 
-.. _NEWS/2013.05:
+.. _CHANGELOG/2013.05:
 
 2013.05
 =======

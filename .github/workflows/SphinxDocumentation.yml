@@ -111,6 +111,26 @@ jobs:
           python -m pip install --disable-pip-version-check -U wheel
           python -m pip install --disable-pip-version-check ${{ inputs.requirements }}
 
+      - name: 📥 Download the report of OSVVM's regression
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          reportDirectory="${{ inputs.doc_directory || '.' }}/report"
+          runID="$(gh run list --repo OSVVM/OsvvmLibraries --workflow Pipeline.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId')"
+          if [[ -z "${runID}" ]]; then
+            printf -- "::error title=%s::%s\n" "Unittest Summary Report" "No successful run of OsvvmLibraries' 'Pipeline.yml' found."
+            exit 1
+          fi
+
+          printf -- "Downloading artifact 'xml' of run %s ...\n" "${runID}"
+          if ! gh run download "${runID}" --repo OSVVM/OsvvmLibraries --name xml --dir "${reportDirectory}"; then
+            printf -- "::error title=%s::%s\n" "Unittest Summary Report" "Downloading artifact 'xml' of run ${runID} failed."
+            exit 1
+          fi
+
+          tar -xf "${reportDirectory}/__pyTooling_upload_artifact__.tar" -C "${reportDirectory}" && rm "${reportDirectory}/__pyTooling_upload_artifact__.tar"
+          tree "${reportDirectory}"
+
       - name: ☑ Generate HTML documentation
         run: |
           export PYTHONPATH=$(pwd)
@@ -186,6 +206,26 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check -U wheel
           python -m pip install --disable-pip-version-check ${{ inputs.requirements }}
+
+      - name: 📥 Download the report of OSVVM's regression
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          reportDirectory="${{ inputs.doc_directory || '.' }}/report"
+          runID="$(gh run list --repo OSVVM/OsvvmLibraries --workflow Pipeline.yml --branch main --status success --limit 1 --json databaseId --jq '.[0].databaseId')"
+          if [[ -z "${runID}" ]]; then
+            printf -- "::error title=%s::%s\n" "Unittest Summary Report" "No successful run of OsvvmLibraries' 'Pipeline.yml' found."
+            exit 1
+          fi
+
+          printf -- "Downloading artifact 'xml' of run %s ...\n" "${runID}"
+          if ! gh run download "${runID}" --repo OSVVM/OsvvmLibraries --name xml --dir "${reportDirectory}"; then
+            printf -- "::error title=%s::%s\n" "Unittest Summary Report" "Downloading artifact 'xml' of run ${runID} failed."
+            exit 1
+          fi
+
+          tar -xf "${reportDirectory}/__pyTooling_upload_artifact__.tar" -C "${reportDirectory}" && rm "${reportDirectory}/__pyTooling_upload_artifact__.tar"
+          tree "${reportDirectory}"
 
       - name: ☑ Generate LaTeX documentation
         run: |

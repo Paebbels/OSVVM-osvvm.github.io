@@ -1,12 +1,44 @@
-.. _OSVVM:
-
-Open Source VHDL Verification Methodology
-#########################################
-
 .. image:: _static/logo_full_size.png
    :width: 500 px
    :align: center
    :target: https://github.com/OSVVM
+
+.. only:: html
+
+   |SHIELD:github| |SHIELD:src-license| |SHIELD:ghp-doc| |SHIELD:doc-license| |br|
+   |SHIELD:tag| |SHIELD:github-action|
+
+.. # Written by hand until pyTooling.Sphinx' 'shields' directive supports generic badges (GitHub organization, colour).
+
+.. |SHIELD:github| image:: https://img.shields.io/badge/GitHub-OSVVM-fbb03b?longCache=true&style=flat-square&logo=GitHub
+   :alt: OSVVM on GitHub
+   :height: 22
+   :target: https://GitHub.com/OSVVM
+.. |SHIELD:src-license| image:: https://img.shields.io/badge/code-Apache--2.0-blue?longCache=true&style=flat-square
+   :alt: Code license
+   :height: 22
+   :target: https://GitHub.com/OSVVM/OsvvmLibraries/blob/HEAD/LICENSE.md
+.. |SHIELD:ghp-doc| image:: https://img.shields.io/website?longCache=true&style=flat-square&label=osvvm.github.io&logo=GitHub&logoColor=fff&up_color=blueviolet&up_message=Read%20now%20%E2%9E%9A&url=https%3A%2F%2Fosvvm.github.io%2F
+   :alt: Documentation - Read Now!
+   :height: 22
+   :target: https://osvvm.github.io/
+.. |SHIELD:doc-license| image:: https://img.shields.io/badge/doc-CC--BY--4.0-green?longCache=true&style=flat-square&logo=CreativeCommons&logoColor=fff
+   :alt: Documentation license
+   :height: 22
+   :target: https://osvvm.github.io/Scripts/doc/Doc-License.html
+.. |SHIELD:tag| image:: https://img.shields.io/github/v/tag/OSVVM/OsvvmLibraries?longCache=true&style=flat-square&logo=GitHub
+   :alt: Latest OSVVM release (Git tag)
+   :height: 22
+   :target: https://GitHub.com/OSVVM/OsvvmLibraries/tags
+.. |SHIELD:github-action| image:: https://img.shields.io/github/actions/workflow/status/OSVVM/OsvvmLibraries/Pipeline.yml?branch=main&longCache=true&style=flat-square&label=OSVVM%20Regression&logo=GitHub%20Actions&logoColor=FFFFFF
+   :alt: GitHub Workflow - OSVVM regression status
+   :height: 22
+   :target: https://GitHub.com/OSVVM/OsvvmLibraries/actions/workflows/Pipeline.yml
+
+.. _OSVVM:
+
+Open Source VHDL Verification Methodology
+#########################################
 
 OSVVM is an advanced verification methodology that
 defines a VHDL verification framework, verification utility library,
@@ -673,18 +705,6 @@ Note all of the OSVVM verification components use the model independent transact
 OSVVM-Common. It is required to be in the directory :file:`OsvvmLibraries/Common`.
 
 
-.. _CREDITS:
-
-Credits
-*******
-
-The OSVVM utility and verification component libraries were developed and are maintained by Jim Lewis of SynthWorks VHDL
-Training and the co-simulation libraries/features were developed and are maintained by Simon Southwell. These libraries
-evolved from methodology and packages developed for SynthWorks' VHDL Testbenches and verification class.
-
-Please support OSVVM by purchasing your VHDL training from SynthWorks.
-
-
 .. _UTILITY:
 
 OSVVM Utility Library
@@ -748,6 +768,12 @@ The OSVVM libraries (source code) are licensed under :doc:`Apache License 2.0 <S
 The accompanying documentation is licensed under
 :doc:`Creative Commons - Attribution 4.0 (CC-BY 4.0) <Scripts/doc/Doc-License>`.
 
+The OSVVM utility and verification component libraries were developed and are maintained by Jim Lewis of SynthWorks VHDL
+Training and the co-simulation libraries/features were developed and are maintained by Simon Southwell. These libraries
+evolved from methodology and packages developed for SynthWorks' VHDL Testbenches and verification class.
+
+Please support OSVVM by purchasing your VHDL training from SynthWorks.
+
 
 .. toctree::
    :caption: Overview
@@ -757,8 +783,7 @@ The accompanying documentation is licensed under
    Installation/Integration/Updates <Scripts/doc/Installation>
    Simulator Specifics <Scripts/doc/SimulatorSpecifics>
    QuickReferenceGuides
-   News
-   Tutorial
+   ChangeLog
 
 .. raw:: latex
 
@@ -768,9 +793,10 @@ The accompanying documentation is licensed under
    :caption: User Guides
    :hidden:
 
-   User Guide <Scripts/doc/UserGuide/index>
+   Writing Tests using OSVVM <Framework/TestWriters>
+   Writing OSVVM Verification Components <Framework/VCDevelopers>
+   OSVVM Scripting Guide <Scripts/doc/UserGuide/index>
    Regression Testing and Reports <Scripts/doc/Reports/index>
-   Structured Testbench Framework <Framework/StructuredTestbench>
    Model Independent Transaction Interface <Common/doc/MIT/index>
 
 .. raw:: latex
@@ -805,7 +831,15 @@ The accompanying documentation is licensed under
 
    AXI4 <AXI4/doc/Axi4>
    AXI4-Stream <AXI4/doc/AxiStream>
+   VC/AvalonST
+   VC/DpRam
+   VC/Ethernet
    Interrupt Handler <Common/doc/InterruptHandler>
+   VC/SPI
+   VC/SpaceWireMonitor
+   VC/UART
+   VC/VideoBus
+   VC/Wishbone
 
 .. raw:: latex
 
@@ -828,6 +862,7 @@ The accompanying documentation is licensed under
 
    TCL Command Reference <osvvm-scripts/osvvm>
    Scripts/doc/YAML/index
+   unittests/index
 
 .. raw:: latex
 
@@ -843,3 +878,13 @@ The accompanying documentation is licensed under
    Scripts/doc/Glossary
    genindex
    Scripts/doc/TODO
+
+.. raw:: latex
+
+   \part{Unorganized}
+
+.. toctree::
+   :caption: Unorganized
+   :hidden:
+
+   Structured Testbench Framework <Framework/StructuredTestbench>

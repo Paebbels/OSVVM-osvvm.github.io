@@ -38,11 +38,12 @@ templates_path = ["_templates"]
 # the pages of this repository. Everything else in the submodules (READMEs, sources, testbenches) is not a page.
 include_patterns = [
 	"index.rst",
-	"News.rst",
+	"ChangeLog.rst",
 	"QuickReferenceGuides.rst",
-	"Tutorial.rst",
 	"HelperPackages.rst",
 	"Framework/**",
+	"VC/**",
+	"unittests/**",
 	"osvvm-scripts/**",
 	"Scripts/doc/**",
 	"osvvm/doc/**",
@@ -189,6 +190,19 @@ extensions = [
  	"pyTooling.Sphinx",
 # User defined extensions
 ]
+
+
+# ==============================================================================
+# pyTooling.Sphinx - reports of domain 'report'
+# ==============================================================================
+# The merged JUnit XML of OsvvmLibraries' regression (artifact 'xml' of workflow 'Pipeline.yml'); the pipeline
+# downloads it to 'report/'.
+pyTooling_Unittest_Testsuites = {
+	"osvvm": {
+		"name":       "OSVVM Regression",
+		"xml_report": "report/Unittesting.xml",
+	}
+}
 
 
 # ==============================================================================
