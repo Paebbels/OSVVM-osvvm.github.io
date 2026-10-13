@@ -52,7 +52,7 @@ have helped develop VHDL standards.
 We have used our expert VHDL skills to create
 advanced verification capabilities that provide:
 
-.. grid:: 1 2 3 4
+.. grid:: 1 2 3 3
 
    .. grid-item-card:: A structured transaction-based framework
 
