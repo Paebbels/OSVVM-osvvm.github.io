@@ -135,3 +135,8 @@ dl.field-list > dd > div:has(div.highlight) {
 .sd-container-fluid > .sd-row > .sd-col > ul.simple {
 	margin-bottom: 0px;
 }
+
+/* sphinx-design cards: highlight the hovered card like a hovered row of a pyTooling.Sphinx report table */
+.sd-card:hover {
+	background-color: rgba(0, 187, 255, 0.5);
+}
