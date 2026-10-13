@@ -1,97 +1,302 @@
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+from sys import path as sys_path
+from os.path import abspath
 from pathlib import Path
-from json import loads as json_loads
-
+from json import loads
 
 ROOT = Path(__file__).resolve().parent
 
-
-# -- Project information -----------------------------------------------------
-
-project = 'OSVVM Documentation'
-author = 'Jim Lewis'
-copyright = f'2022, {author} Licensed under CC BY-NC-ND 4.0'
-
-version = '2022.03'
-release = version
+sys_path.insert(0, abspath("."))
+# sys_path.insert(0, abspath("_extensions"))
 
 
-# -- General configuration ---------------------------------------------------
+# ==============================================================================
+# Project information and versioning
+# ==============================================================================
+# The version info for the project you're documenting, acts as replacement for
+# |version| and |release|, also used in various other places throughout the
+# built documents.
+project =   "OSVVM"
+author =    "Jim Lewis, Patrick Lehmann"
+copyright = "Copyright 2026 The OSVVM Authors"
+version =   "2026.09"
+release =   "2026.09"
 
+
+# ==============================================================================
+# Miscellaneous settings
+# ==============================================================================
+# The master toctree document.
 master_doc = "index"
 
-extensions = [
-    "sphinx.ext.extlinks",
-    "sphinx.ext.intersphinx", 
-    'myst_parser'
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ["_templates"]
+
+# The documentation is collected from the 'doc/' directories of OSVVM's repositories (Git submodules) and from
+# the pages of this repository. Everything else in the submodules (READMEs, sources, testbenches) is not a page.
+include_patterns = [
+	"index.rst",
+	"Framework/**",
+	"osvvm-scripts/**",
+	"Scripts/doc/**",
+	"osvvm/doc/**",
+	"Common/doc/**",
+	"AXI4/doc/**",
+	"CoSim/doc/**",
+	"CoSimPCIe/doc/**",
 ]
 
-source_suffix = {
-    '.rst': 'restructuredtext', '.md': 'markdown'
-}
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+# This pattern also affects html_static_path and html_extra_path.
+exclude_patterns = [
+	"_build",
+	"Scripts/doc/_build",
+	"Scripts/doc/osvvm-scripts",   # Ruff! output of a local OSVVM-Scripts build; this build writes 'osvvm-scripts/'
+	"Scripts/doc/index.rst",       # OSVVM-Scripts' own start page; replaced by 'index.rst'
+	"Thumbs.db",
+	".DS_Store"
+]
 
-templates_path = ['_templates']
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = "manni"
 
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '*.*_bak', 'z_*']
 
-numfig = True
+# ==============================================================================
+# Restructured Text settings
+# ==============================================================================
+prologPath = Path("prolog.inc")
+try:
+	with prologPath.open("r", encoding="utf-8") as fileHandle:
+		rst_prolog = fileHandle.read()
+except Exception as ex:
+	print(f"[ERROR:] While reading '{prologPath}'.")
+	print(ex)
+	rst_prolog = ""
 
-numfig_format = {
-    'figure': 'Figure %s: ', 
-    'table': 'Table %s: ', 
-    'code-block': 'Listing %s', 
-    'section': 'Section %s'
-}
 
-# -- Options for HTML output -------------------------------------------------
-
+# ==============================================================================
+# Options for HTML output
+# ==============================================================================
 html_context = {}
 ctx = ROOT / "context.json"
 if ctx.is_file():
-    html_context.update(json_loads(ctx.open("r").read()))
+	html_context.update(loads(ctx.open("r", encoding="utf-8").read()))
 
-if (ROOT / "_theme").is_dir():
-    html_theme_path = ["."]
-    html_theme = "_theme"
-    html_theme_options = {
-        "logo_only": True,
-        "home_breadcrumbs": True,
-        "vcs_pageview_mode": "blob",
-    }
-    html_css_files = [
-        "theme_overrides.css",
-    ]
-else:
-    html_theme = "alabaster"
+# ==============================================================================
+# Options for HTML output
+# ==============================================================================
+html_theme = "sphinx_rtd_theme"
+html_theme_options = {
+	"logo_only": True,
+	"vcs_pageview_mode": 'blob',
+	"navigation_depth": 5,
+}
+html_css_files = [
+	'css/override.css',
+]
 
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
 html_logo = str(Path(html_static_path[0]) / "logo.png")
 html_favicon = str(Path(html_static_path[0]) / "favicon.png")
 
-htmlhelp_basename = "HDLCDoc"
+# Output file base name for HTML help builder.
+htmlhelp_basename = "OSVVMDoc"
+
+# If not None, a 'Last updated on:' timestamp is inserted at every page
+# bottom, using the given strftime format.
+# The empty string is equivalent to '%b %d, %Y'.
+html_last_updated_fmt = "%d.%m.%Y"
+
+# ==============================================================================
+# Python settings
+# ==============================================================================
+modindex_common_prefix = [
+	f"{project}."
+]
+
+# ==============================================================================
+# Options for LaTeX / PDF output
+# ==============================================================================
+from textwrap import dedent
+
+latex_engine = "lualatex"
+latex_use_xindy = False
+latex_table_style = ["booktabs"]   # Sphinx's default 'colorrows' exceeds TeX's input stack in 'tabulary' tables
+latex_elements = {
+	"papersize":    "a4paper",      # The paper size ('letterpaper' or 'a4paper').
+	"pointsize":    "10pt",         # The font size ('10pt', '11pt' or '12pt').
+	"inputenc":     "",             # Let LuaLaTeX handle input encoding
+	"utf8extra":    "",
+	"polyglossia":  "",
+	"babel":       r"\usepackage[english]{babel}",
+	"fontenc":     r"\usepackage{fontspec}",  # Disable the default T1 font encoding (Essential for LuaLaTeX)
+	"fontpkg":     dedent("""\
+		\\usepackage[fontfamily=libertinus]{pytooling}
+	"""),
+	"passoptionstopackages": dedent("""\
+		\\PassOptionsToPackage{verbatimvisiblespace=\\ }{sphinx}
+	"""),
+	"maxlistdepth": "10",           # 'tree' directives nest deeper than LaTeX's default of 4 lists
+	"makeindex":   r"\usepackage[columns=1]{idxlayout}\makeindex",
+	"printindex":  r"\def\twocolumn[#1]{#1}\printindex",
+}
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title,
+#  author, documentclass [howto, manual, or own class]).
+latex_documents = [
+	( master_doc,
+		"OSVVM.tex",
+		"The OSVVM Documentation",
+		"Jim Lewis, Patrick Lehmann",
+		"manual"
+	),
+]
 
 
-# -- Sphinx.Ext.InterSphinx --------------------------------------------------------------------------------------------
+# ==============================================================================
+# Extensions
+# ==============================================================================
+extensions = [
+# Standard Sphinx extensions
+	"sphinx.ext.autodoc",
+	"sphinx.ext.extlinks",
+	"sphinx.ext.intersphinx",
+	"sphinx.ext.inheritance_diagram",
+	"sphinx.ext.todo",
+	"sphinx.ext.graphviz",
+	"sphinx.ext.mathjax",
+	"sphinx.ext.ifconfig",
+	"sphinx.ext.viewcode",
+# SphinxContrib extensions
+# 	'sphinxcontrib.autoprogram',
+ 	'sphinxcontrib.mermaid',
+# Other extensions
+ 	"sphinx_design",
+ 	"sphinx_copybutton",
+ 	"pyTooling.Sphinx",
+# User defined extensions
+]
 
+
+# ==============================================================================
+# Sphinx.Ext.InterSphinx
+# ==============================================================================
 intersphinx_mapping = {
-    "python": ("https://docs.python.org/3/", None),
-    "edaa": ("https://edaa-org.github.io", None),
+	"python": ("https://docs.python.org/3", None),
+	"pyTool": ("https://pyTooling.github.io/pyTooling/", None),
+	"osvvm":  ("https://osvvm.github.io/", None),
 }
 
 
-# -- Sphinx.Ext.ExtLinks -----------------------------------------------------------------------------------------------
+# ==============================================================================
+# Sphinx.Ext.AutoDoc
+# ==============================================================================
+# see: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#configuration
+#autodoc_default_options = {
+#	"private-members": True,
+#	"special-members": True,
+#	"inherited-members": True,
+#	"exclude-members": "__weakref__"
+#}
+#autodoc_class_signature = "separated"
+autodoc_member_order = "bysource"       # alphabetical, groupwise, bysource
+autodoc_typehints = "both"
+#autoclass_content = "both"
 
+
+# ==============================================================================
+# Sphinx.Ext.ExtLinks
+# ==============================================================================
 extlinks = {
-    "gh": ("https://github.com/OSVVM/%s", "%s"),
-    "pdfdoc": ("https://github.com/OSVVM/Documentation/blob/main/%s", "%s"),
-    "AXI4": ("https://github.com/OSVVM/AXI4/tree/main/%s", "%s"),
-    "UART": ("https://github.com/OSVVM/UART/tree/main/%s", "%s"),
-    "DpRam": ("https://github.com/OSVVM/UART/tree/main/%s", "%s"),
+	"gh":       ("https://GitHub.com/%s", "gh:%s"),
+	"ghissue":  ("https://GitHub.com/OSVVM/osvvm.github.io/issues/%s", "issue #%s"),
+	"ghpull":   ("https://GitHub.com/OSVVM/osvvm.github.io/pull/%s", "pull request #%s"),
+	"ghsrc":    ("https://GitHub.com/OSVVM/osvvm.github.io/blob/main/%s", None),
+	"wiki":     ("https://en.wikipedia.org/wiki/%s", None),
+	"osvvmdoc": ("https://github.com/OSVVM/Documentation/blob/main/%s.pdf", None),
 }
 
-# # Removed from extlinks    "wikipedia": ("https://en.wikipedia.org/wiki/%s", None),
-# # Removed from extlinks    "awesome": ("https://hdl.github.io/awesome/items/%s", ""),
-# # Removed from extlinks    "ghsharp": ("https://github.com/OSVVM/osvvm.github.io/issues/%s", "#"),
-# # Removed from extlinks    "ghissue": ("https://github.com/OSVVM/osvvm.github.io/issues/%s", "issue #"),
-# # Removed from extlinks    "ghpull": ("https://github.com/OSVVM/osvvm.github.io/pull/%s", "pull request #"),
-# # Removed from extlinks    "ghsrc": ("https://github.com/OSVVM/osvvm.github.io/blob/main/%s", ""),
+
+# ==============================================================================
+# Sphinx.Ext.Graphviz
+# ==============================================================================
+graphviz_output_format = "svg"
+
+
+# ==============================================================================
+# SphinxContrib.Mermaid
+# ==============================================================================
+mermaid_params = [
+	'--backgroundColor', 'transparent',
+]
+mermaid_verbose = True
+
+
+# ==============================================================================
+# Sphinx.Ext.Inheritance_Diagram
+# ==============================================================================
+inheritance_node_attrs = {
+#	"shape": "ellipse",
+#	"fontsize": 14,
+#	"height": 0.75,
+	"color": "dodgerblue1",
+	"style": "filled"
+}
+
+
+# ==============================================================================
+# Sphinx.Ext.ToDo
+# ==============================================================================
+# If true, `todo` and `todoList` produce output, else they produce nothing.
+todo_include_todos = True
+todo_link_only = True
+
+
+# ==============================================================================
+# Sphinx_Design
+# ==============================================================================
+# sd_fontawesome_latex = True
+
+
+# ==============================================================================
+# Pygments: highlight OSVVM's commands in Tcl code
+# ==============================================================================
+from re                import compile as re_compile
+from pygments.lexers   import TclLexer
+from pygments.token    import Name
+
+def _readOsvvmCommands() -> frozenset[str]:
+	"""Read the names of OSVVM's commands from the 'namespace export' lines of the Tcl sources."""
+	exportPattern = re_compile(r"^\s*namespace\s+export\s+([^;#]+)")
+	commands = set()
+	for tclFile in (ROOT / "Scripts").glob("*.tcl"):
+		for line in tclFile.read_text(encoding="utf-8", errors="replace").splitlines():
+			if (match := exportPattern.match(line)) is not None:
+				commands.update(match.group(1).split())
+
+	return frozenset(commands)
+
+
+class OsvvmTclLexer(TclLexer):
+	"""Tcl lexer, which highlights OSVVM's commands as functions instead of as unknown names."""
+
+	name = "Tcl (OSVVM)"
+	osvvmCommands = _readOsvvmCommands()
+
+	def get_tokens_unprocessed(self, text, stack=("root", )):
+		for index, token, value in super().get_tokens_unprocessed(text, stack):
+			if token is Name.Variable and value in self.osvvmCommands:
+				token = Name.Function
+			yield index, token, value
+
+
+def setup(app):
+	app.add_lexer("tcl", OsvvmTclLexer)
