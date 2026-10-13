@@ -38,6 +38,10 @@ templates_path = ["_templates"]
 # the pages of this repository. Everything else in the submodules (READMEs, sources, testbenches) is not a page.
 include_patterns = [
 	"index.rst",
+	"News.rst",
+	"QuickReferenceGuides.rst",
+	"Tutorial.rst",
+	"HelperPackages.rst",
 	"Framework/**",
 	"osvvm-scripts/**",
 	"Scripts/doc/**",
@@ -56,6 +60,7 @@ exclude_patterns = [
 	"Scripts/doc/_build",
 	"Scripts/doc/osvvm-scripts",   # Ruff! output of a local OSVVM-Scripts build; this build writes 'osvvm-scripts/'
 	"Scripts/doc/index.rst",       # OSVVM-Scripts' own start page; replaced by 'index.rst'
+	"Scripts/doc/Support.rst",     # on the start page 'index.rst'
 	"Thumbs.db",
 	".DS_Store"
 ]
