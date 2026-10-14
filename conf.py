@@ -40,6 +40,7 @@ include_patterns = [
 	"index.rst",
 	"Overview/QuickReferenceGuides.rst",
 	"Overview/ReleaseHistory.rst",
+	"Overview/PublicationsAndWebinars.rst",
 	"UserGuides/**",
 	"UtilityLibrary/**",
 	"VerificationComponents/**",
@@ -109,6 +110,9 @@ html_css_files = [
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
+
+# Redirects of the former pages (Overview/Osvvm*.html), copied to the output as they are.
+html_extra_path = ["_redirects"]
 
 html_logo = str(Path(html_static_path[0]) / "logo-grey.png")
 html_favicon = str(Path(html_static_path[0]) / "favicon.png")

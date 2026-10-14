@@ -122,6 +122,8 @@ jobs:
             exit 1
           fi
 
+          printf -- "OSVVM_REGRESSION_RUN=%s\n" "${runID}" >> "${GITHUB_ENV}"
+
           printf -- "Downloading artifact 'xml' of run %s ...\n" "${runID}"
           if ! gh run download "${runID}" --repo OSVVM/OsvvmLibraries --name xml --dir "${reportDirectory}"; then
             printf -- "::error title=%s::%s\n" "Unittest Summary Report" "Downloading artifact 'xml' of run ${runID} failed."
@@ -141,6 +143,26 @@ jobs:
           printf "::group::${ANSI_LIGHT_BLUE}%s${ANSI_NOCOLOR}\n" "Generated documentation ..."
           tree _build
           printf "::endgroup::\n"
+
+      - name: 📥 Add the HTML reports of OSVVM's regression (NVC on Ubuntu)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          reportDirectory="$(mktemp -d)"
+          htmlDirectory="${{ inputs.doc_directory || '.' }}/_build/html/regression"
+
+          printf -- "Downloading artifact 'log-html-Ubuntu-nvc' of run %s ...\n" "${OSVVM_REGRESSION_RUN}"
+          if ! gh run download "${OSVVM_REGRESSION_RUN}" --repo OSVVM/OsvvmLibraries --name log-html-Ubuntu-nvc --dir "${reportDirectory}"; then
+            printf -- "::error title=%s::%s\n" "Example Reports" "Downloading artifact 'log-html-Ubuntu-nvc' of run ${OSVVM_REGRESSION_RUN} failed."
+            exit 1
+          fi
+          tar -xf "${reportDirectory}/__pyTooling_upload_artifact__.tar" -C "${reportDirectory}"
+
+          mkdir -p "${htmlDirectory}"
+          cp -R "${reportDirectory}/temp/." "${htmlDirectory}/"
+          # Plain-text copies of the test case transcripts: no report links them, the HTML transcripts are kept.
+          find "${htmlDirectory}" -path '*/results/*' -name '*.log' -delete
+          du -sh "${htmlDirectory}"
 
       - name: 📤 Upload 'HTML Documentation' artifact
         uses: pyTooling/upload-artifact@v6
@@ -217,6 +239,8 @@ jobs:
             printf -- "::error title=%s::%s\n" "Unittest Summary Report" "No successful run of OsvvmLibraries' 'Pipeline.yml' found."
             exit 1
           fi
+
+          printf -- "OSVVM_REGRESSION_RUN=%s\n" "${runID}" >> "${GITHUB_ENV}"
 
           printf -- "Downloading artifact 'xml' of run %s ...\n" "${runID}"
           if ! gh run download "${runID}" --repo OSVVM/OsvvmLibraries --name xml --dir "${reportDirectory}"; then

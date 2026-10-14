@@ -782,6 +782,7 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    Simulator Specifics <Scripts/doc/SimulatorSpecifics>
    Overview/QuickReferenceGuides
    Overview/ReleaseHistory
+   Overview/PublicationsAndWebinars
 
 .. raw:: latex
 
@@ -861,6 +862,7 @@ Please support OSVVM by purchasing your VHDL training from SynthWorks.
    TCL Command Reference <osvvm-scripts/osvvm>
    Scripts/doc/YAML/index
    References/UnittestSummary
+   References/ExampleReports
 
 .. raw:: latex
 
