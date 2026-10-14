@@ -3,8 +3,9 @@
 Release History
 ###############
 
-Latest blog posts and news are available at the `OSVVM Blog <https://osvvm.org/blog>`__; the changes of each release
-are in the ``CHANGELOG.md`` files of OSVVM's repositories, linked from OsvvmLibraries'
+Most releases are announced on the `OSVVM Blog <https://osvvm.org/blog>`__; each version below links to its
+announcement and summarizes it, or shows the description of its GitHub release page. A version without either is
+documented only in the ``CHANGELOG.md`` files of OSVVM's repositories, linked from OsvvmLibraries'
 `CHANGELOG.md <https://github.com/OSVVM/OsvvmLibraries/blob/main/CHANGELOG.md>`__.
 
 Since 2020.07, a release of OSVVM is a release of `OsvvmLibraries <https://github.com/OSVVM/OsvvmLibraries>`__, which
@@ -55,20 +56,29 @@ Gilda Radner taught us, "...it is always something ...". OSVVM release 2026.09 a
 :Released: 2026-09-10
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2026.08>`__
 
-OSVVM release 2026.08 adds the following
+Announced in `OSVVM 2026.08 <https://osvvm.org/archives/2994>`__ (2026-09-10).
 
--  Updated Requirements Settings
--  Multi-line Alert, Log, LogHeader, PrintLine, PrintHeader, ...
--  Updated Settings Methodology for OsvvmSettingsPkg
--  Compile time selection of MemoryPkg storage policy
--  format: a version of to_string that handles inconsistencies
--  SetExpectedAlertCount, IncrementExpectedAlertCount
--  Status: STOPLIMIT
--  Status Tracking with ExpectedStatus and KnownStatus
--  HTML'ized Transcript Files
--  Known Breaking Changes
-
-`For more details, See my blog post on OSVVM.org <https://osvvm.org/archives/2994>`__
+* Requirements tracking: additional settings in ``OsvvmSettingsPkg``.
+* Multi-line ``Alert``, ``Log``, ``LogHeader``, ``PrintLine`` and ``PrintHeader`` with line wrapping either at the end
+  of the Alert/Log prefix or indented from the left column.
+* New settings methodology: ``OsvvmSettingsPkg_local.vset`` contains only the changed values (``NAME: Value``); all
+  other settings keep their defaults, so new settings no longer break local settings files.
+* ``MemoryPkg`` storage policy selectable at compile time via Tcl variable ``$::osvvm::UseMemoryPkg01``; instances
+  ``MemoryPkg_UX01``, ``MemoryPkg_01`` and ``MemoryPkg`` (default policy ``UX01``, used by ``Axi4Memory``).
+* Storage policies renamed: ``X`` → ``UX01``, ``NoX`` → ``01``.
+* New ``format`` function: simulator-independent alternative to ``to_string`` for ``integer`` (prints
+  ``integer'high``/``integer'low``), ``real`` (fixed point or exponent, configurable digits) and ``time`` (configurable
+  unit and fraction digits).
+* ``SetExpectedAlertCount`` and ``IncrementExpectedAlertCount`` can be called at any time; replaces passing negative
+  values via ``ExternalErrors`` of ``EndOfTestReports``.
+* Scripts: ``ExpectedStatus`` (e.g. a test expected to fail) and ``KnownStatus`` (known, currently unfixable failures);
+  build reports add "Untracked Failures" and "Changes in Tracked Test Cases".
+* New test status ``STOPLIMIT`` when a test ends because an alert stop count was reached.
+* Transcript files opened with ``TranscriptOpen`` are HTML'ized (errors and failures in red); with mirroring off, the
+  transcript is embedded into the HTML log via frame (requires ``OSVVM_PREFIX_X_MARKS_THE_SPOT: "%%x "`` in
+  ``OsvvmSettingsPkg_local.vset``).
+* **Breaking:** Alert/Log spacing changed and time is printed with a decimal point; transcript comparisons fail unless
+  ``ALERT_LOG_IGNORE_SPACES``, ``ALERT_LOG_IGNORE_EMPTY_LINES`` and ``ALERT_LOG_DIGITS_FOR_TIME_FRACTION`` are set.
 
 .. _RELEASES/2026.05:
 
@@ -77,6 +87,10 @@ OSVVM release 2026.08 adds the following
 
 :Released: 2026-06-07
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2026.05>`__
+
+Announced in `OSVVM 2026.05 <https://osvvm.org/archives/2933>`__ (2026-06-06), with follow-ups `2026.05 and
+SetAxi4Options/GetAxi4Options <https://osvvm.org/archives/2944>`__ (2026-06-17) and `2026.05 and AXI4Memory
+<https://osvvm.org/archives/2948>`__ (2026-06-22).
 
 OSVVM release 2026.05 adds the following
 
@@ -196,6 +210,8 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2026-03-01
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2026.01>`__
 
+Announced in `OSVVM 2026.01 <https://osvvm.org/archives/2882>`__ (2026-03-05).
+
 .. rubric:: CoSim
 
 -  Adds CoSimPCIe Verification Component - Thanks to Simon Southwell
@@ -311,9 +327,24 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 :Released: 2025-07-19
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2025.06>`__
 
+Announced in `OSVVM 2025.06 <https://osvvm.org/archives/2756>`__ (2025-07-22).
+
 .. attention::
 
    The scripts in this release have some issues. Please use :ref:`2025.06a <RELEASES/2025.06a>` instead.
+
+* Build output written to a build directory, ``<DirName>_<ScriptName>`` by default or set via ``BuildName`` (on the
+  ``build`` command line or inside the ``*.pro`` file).
+* New Index of Builds: HTML summary of all previously run builds.
+* Scripts: new ``CreateTestCaseCommonPkg`` generates a package with test suite path and name constants, e.g.
+  ``PATH_TO_VALIDATED_RESULTS``.
+* Scripts: new ``RunAllTests`` runs all tests matching a name pattern (e.g. ``TbUart_``).
+* Questa: ``OSVVM_TOOL`` = ``Questa`` selects the new ``vopt`` + ``vsim`` flow (``VendorScripts_Questa.tcl``, default
+  for Questa 2025.2 and newer); ``Siemens`` selects the old ``vsim`` flow (``VendorScripts_Siemens.tcl``).
+* ``WaitForClock``/``WaitForTransaction``: ``ClkActive`` accepts ``'1'`` (rising, default), ``'0'`` (falling) and
+  ``'-'`` (any edge).
+* VC test cases use ``CreateTestCaseCommonPkg``, ``TranscriptOpen`` without parameters and ``EndOfTestReports`` with
+  ``TIMEOUT`` and ``NOCHECKS`` detection.
 
 .. _RELEASES/2025.04:
 
@@ -330,6 +361,15 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 
 :Released: 2025-02-26
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2025.02>`__
+
+Announced in `XSIM Loves OSVVM <https://osvvm.org/archives/2624>`__ (2025-02-24).
+
+* AMD/Xilinx XSIM 2024.2 support for the OSVVM libraries and scripts.
+* ``MemoryPkg`` and ``TextUtilPkg``: updates for XSIM (``MemoryPkg`` crashed XSIM 2024.2).
+* Scripts: reports work with XSIM 2024.2 (Tcl 8.6); proper log files replace the XSIM 2023.2 workaround.
+* AXI4 Full and AXI4 Lite VCs: work with XSIM without Xilinx-specific variants.
+* Known XSIM limitations: ``InitSeed`` with ``time`` (``std.env.resolution_limit`` returns 0), resolution functions for
+  ``real``/``time``, and VCs with ``time``-valued options (e.g. UART baud rate).
 
 
 .. _RELEASES/2024:
@@ -360,6 +400,8 @@ As a result, if a test case calls SetAxi4Options/GetAxi4Options at time 0 with a
 
 :Released: 2024-08-01
 :Source: `GitHub release <https://github.com/OSVVM/OsvvmLibraries/releases/tag/2024.07>`__
+
+Announced in `OSVVM release 2024.07 + Conference Trip Report <https://osvvm.org/archives/2546>`__ (2024-07-27).
 
 The 2024.07 release adds:
 
@@ -443,6 +485,10 @@ The 2024.07 release adds:
 :Released: 2024-06-10
 :Source: `Git tag 2024.05b <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05b>`__
 
+Mentioned in `OSVVM 2024.05 Release <https://osvvm.org/archives/2428>`__ (2024-05-30).
+
+* Fixed missing hierarchy in the alert report.
+
 .. _RELEASES/2024.05a:
 
 2024.05a
@@ -450,6 +496,10 @@ The 2024.07 release adds:
 
 :Released: 2024-05-30
 :Source: `Git tag 2024.05a <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05a>`__
+
+Mentioned in `OSVVM 2024.05 Release <https://osvvm.org/archives/2428>`__ (2024-05-30).
+
+* Fixed links to code coverage reports.
 
 .. _RELEASES/2024.05:
 
@@ -459,6 +509,13 @@ The 2024.07 release adds:
 :Released: 2024-05-28
 :Source: `Git tag 2024.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.05>`__
 
+Announced in `OSVVM 2024.05 Release <https://osvvm.org/archives/2428>`__ (2024-05-30).
+
+* Reports: more compact output format; report generation code refactored.
+* SPI: new ``SpiController`` and ``SpiPeripheral`` VCs and a detailed SPI test suite.
+* ``RandomPkg`` fix: the ``max >= min`` check was reported twice.
+* ``NameStorePkg``: singleton procedures pass all parameters to the protected type methods.
+
 .. _RELEASES/2024.03a:
 
 2024.03a
@@ -467,6 +524,10 @@ The 2024.07 release adds:
 :Released: 2024-05-02
 :Source: `Git tag 2024.03a <https://github.com/OSVVM/OsvvmLibraries/tree/2024.03a>`__
 
+Mentioned in `OSVVM 2024.03 Release <https://osvvm.org/archives/2365>`__ (2024-04-11).
+
+* ``EndSimulation`` no longer closes waveform windows on Tcl errors (except with ``SetInteractiveMode``).
+
 .. _RELEASES/2024.03:
 
 2024.03
@@ -474,6 +535,36 @@ The 2024.07 release adds:
 
 :Released: 2024-04-10
 :Source: `Git tag 2024.03 <https://github.com/OSVVM/OsvvmLibraries/tree/2024.03>`__
+
+Announced in `OSVVM 2024.03 Release <https://osvvm.org/archives/2365>`__ (2024-04-11).
+
+* Settings via deferred constants in ``OsvvmSettingsPkg`` and ``OsvvmScriptSettingsPkg``; package bodies are selectable
+  and compiled last.
+* ``RANDOM_USE_NEW_SEED_METHODS``: ``InitSeed`` uses new seed methods by default (randomization results change).
+* ``COVERAGE_DEFAULT_WEIGHT_MODE`` changed from ``AT_LEAST`` to ``REMAIN`` (randomization results change).
+* **Breaking:** ``ALERT_LOG_JUSTIFY_ENABLE``, ``ALERT_LOG_WRITE_TIME_FIRST`` and ``ALERT_LOG_TIME_JUSTIFY_AMOUNT``
+  change the default Alert/Log formatting.
+* **Breaking:** ``SCOREBOARD_YAML_IS_BASE_FILE_NAME``: ``WriteScoreboardYaml`` takes a base name instead of a file name.
+* String-valued options of ``SetAlertLogOptions`` and ``SetReportOptions`` deprecated (ignored with warning); set via
+  ``OsvvmSettingsPkg``. ``SetOsvvmGlobalOptions`` removed.
+* ``OsvvmSettingsLocal.tcl`` replaces ``LocalScriptsDefaults.tcl`` (still read if the new file is absent);
+  ``OsvvmVersionCompatibility "2023"`` restores the previous defaults; new ``SettingsAreRelativeToSimulationDirectory``
+  and ``OsvvmSettingsSubDirectory``.
+* AMD/Xilinx XSIM 2023.2: packages updated, improved script support, ``osvvm.pro`` selects XSIM-specific packages; most
+  VC tests still fail (reported to AMD).
+* New VCs: SPI (Guy Eschemann) and VideoBus (Louis Adriaens).
+* ``ResizePkg``: ``SafeResize(AlertLogID, …)`` with improved message; used by all OSVVM VCs.
+* VCs use the ``ModelParametersIDType`` singleton in the transaction record instead of a shared
+  ``ModelParametersPType``.
+* ``AlertLogPkg``: new ``AffirmIfTranscriptsMatch``; ``AffirmIfEqual`` for ``boolean``.
+* ``RandomPkg``: ``SetRandomSalt`` overload returning its parameter type.
+* ``MemoryPkg``: aliases ``MemWrite`` and ``MemRead``.
+* Scripts: ``OpenBuildHtml`` (Siemens and Aldec).
+* ``FifoFillPkg_slv``: ``PopBurstVector`` returns a count for ``slv_vector``/``integer_vector``.
+* ``AddressBusTransactionPkg``: ``SetModelOptions`` for ``time``.
+* Fix: ``NewID`` name collisions between ``MemoryPkg``, ``CoveragePkg`` and ``ScoreboardPkg`` crashed
+  ``EndOfTestReports``.
+* Fix: scripts close files left open after a simulator error.
 
 
 .. _RELEASES/2023:
@@ -489,6 +580,10 @@ The 2024.07 release adds:
 :Released: 2023-10-03
 :Source: `Git tag 2023.09a <https://github.com/OSVVM/OsvvmLibraries/tree/2023.09a>`__
 
+Announced in `OSVVM 2023.09a Release <https://osvvm.org/archives/2304>`__ (2023-10-10); it also announces 2023.09.
+
+* Fixed co-simulation issues introduced in 2023.09.
+
 .. _RELEASES/2023.09:
 
 2023.09
@@ -496,6 +591,19 @@ The 2024.07 release adds:
 
 :Released: 2023-09-29
 :Source: `Git tag 2023.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.09>`__
+
+Announced together with 2023.09a in `OSVVM 2023.09a Release <https://osvvm.org/archives/2304>`__ (2023-10-10).
+
+* Scripts: ``build``/``include`` detect missing files and paths early with better messages.
+* Scripts: ``$::ARGV``/``$::ARGC`` (array) and ``$::argv``/``$::argc``/``$::argv0`` (list).
+* New ``OsvvmSettingsPkg`` with deferred constants providing defaults for ``InitSeed`` seed method, Alert/Log
+  justification and time-first printing, and the ``CoveragePkg`` weight mode.
+* ``AlertLogPkg``, ``ScoreboardPkg``: updated Alert/Log message printing.
+* New ``ModelParametersSingletonPkg``.
+* Stream and Address Bus MIT: ``ModelParametersIdType``, ``ClassifyUnimplementedOperation`` and ``EXTEND_*`` operations
+  for VC-specific options.
+* Stream MIT: ``SendAndGet`` and ``SendAndGetBurst``.
+* ``ScoreboardGenericPkg``: ``WriteScoreboardYaml`` parameters for simpler names.
 
 .. _RELEASES/2023.07:
 
@@ -505,6 +613,13 @@ The 2024.07 release adds:
 :Released: 2023-07-25
 :Source: `Git tag 2023.07 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.07>`__
 
+Announced in `OSVVM 2023.07 Release <https://osvvm.org/archives/2257>`__ (2023-07-26).
+
+* ``AlertLogPkg``: new ``WriteRequirementsYaml``; called by ``EndOfTestReports`` when ``GotRequirements`` is set.
+* Scripts: test case requirements merged into test suite requirements (HTML) and build requirements (HTML and CSV).
+* Scripts: updated Build Summary and Test Case Summary HTML.
+* ``DpRam``: burst support (Louis Adriaens).
+
 .. _RELEASES/2023.05:
 
 2023.05
@@ -512,6 +627,24 @@ The 2024.07 release adds:
 
 :Released: 2023-06-11
 :Source: `Git tag 2023.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.05>`__
+
+Announced in `OSVVM 2023.05 Release <https://osvvm.org/archives/2238>`__ (2023-06-12).
+
+* Address Bus MIT: split transactions for managers; support for subordinates/responders.
+* Stream MIT: test data pattern generation and data check methods.
+* Randomized ready/valid delays: ``AxiStreamTransmitter``/``AxiStreamReceiver`` (``TValid``/``TReady``) and
+  ``Axi4Manager``/``Axi4Memory``/``Axi4Subordinate`` (``xValid``/``xReady``).
+* New ``DelayCoveragePkg`` for cycle-based delay randomization (part of ``OsvvmContext``,
+  ``DelayCoveragePkg_user_guide.pdf``).
+* ``StreamTransactionPkg``/``AddressBusTransactionPkg``: ``SetUseRandomDelays``, ``SetDelayCoverageID``,
+  ``GetDelayCoverageID``.
+* ``StreamTransactionPkg``: ``integer_vector`` overloads of ``SendBurstVector[Async]`` and ``[Try]CheckBurstVector``.
+* ``FifoFillPkg_slv``: ``CheckBurstFifo``.
+* ``CoveragePkg``: ``InitSeed`` includes the parent ID name (randomization results change); new ``IsNotCovered``.
+* ``AlertLogPkg`` fix: YAML omits items with ``ReportMode`` ``DISABLED``.
+* ``ScoreboardGenericPkg``: failed pop from an empty FIFO/scoreboard prints the tag.
+* Ethernet fix: receiver uses repeat-until loop (stale value in first check).
+* ``DpRamController_Blocking`` fix: correct address logged for reads.
 
 .. _RELEASES/2023.04:
 
@@ -521,6 +654,14 @@ The 2024.07 release adds:
 :Released: 2023-04-04
 :Source: `Git tag 2023.04 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.04>`__
 
+Announced in `OSVVM 2023.04 Release <https://osvvm.org/archives/2186>`__ (2023-04-08).
+
+* Co-simulation supports streaming and address bus interfaces.
+* ``OsvvmScriptSettings.vhd`` holds deferred constants; generated body ``OsvvmScriptSettings_Generated.vhd`` is
+  git-ignored.
+* Interrupt handler supports an array of interrupts.
+* Fixes: Ethernet enables, ``Peek`` with tag, UART false break check in no-parity mode.
+
 .. _RELEASES/2023.01:
 
 2023.01
@@ -528,6 +669,15 @@ The 2024.07 release adds:
 
 :Released: 2023-02-04
 :Source: `Git tag 2023.01 <https://github.com/OSVVM/OsvvmLibraries/tree/2023.01>`__
+
+Announced in `OSVVM 2023.01 Release <https://osvvm.org/archives/2149>`__ (2023-02-05).
+
+* New co-simulation environment: C++ software runs against any VC implementing the Address Bus MIT.
+* Generated ``OsvvmScriptSettings.vhd`` with ``OSVVM_OUTPUT_DIRECTORY`` (referenced by ``OsvvmContext``); set via Tcl
+  ``OsvvmTemporaryOutputDirectory`` (default ``CurrentSimulationDirectory``, requires rebuilding the libraries).
+* New ``InterruptGeneratorBit.vhd`` (interrupts from an external device) and ``CoSimInterruptHandler.vhd``.
+* ``InterruptHandler.vhd`` works in co-simulation environments without interrupt switching.
+* PassThru VCs for AXI4, AXI4 Lite and AXI Stream as placeholder DUT (CoSim repository).
 
 
 .. _RELEASES/2022:
@@ -543,6 +693,18 @@ The 2024.07 release adds:
 :Released: 2022-12-18
 :Source: `Git tag 2022.12 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.12>`__
 
+Announced in `OSVVM 2022.12 Release <https://osvvm.org/archives/2133>`__ (2022-12-23).
+
+* ``StartUp.tcl``: environment variable ``OSVVM_TOOL`` selects the simulator when none is detected (previously GHDL);
+  ``OSVVM_TOOL=<Name>`` requires ``VendorScripts_<Name>.tcl``.
+* Updated scripts for Synopsys VCS and Cadence Xcelium.
+* Build log starts as ``OsvvmBuild.log`` in the simulation directory and is moved to ``logs/<BuildName>.log``.
+* Top-level generics on ``simulate`` and ``RunTest``; generic values are part of transcript and test case report file
+  names; HTML log links to tests with generics.
+* Report generation depends only on static OSVVM information: ``Report2Html``, ``Report2Junit``, ``Simulate2Html``,
+  ``Log2Osvvm`` run standalone; ``StartUpReports.tcl`` for plain ``tclsh``.
+* ``SetTranscriptType none`` disables links to HTML logs and coverage reports.
+
 .. _RELEASES/2022.11:
 
 2022.11
@@ -550,6 +712,17 @@ The 2024.07 release adds:
 
 :Released: 2022-11-25
 :Source: `Git tag 2022.11 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.11>`__
+
+Announced in `OSVVM 2022.11 Release <https://osvvm.org/archives/2103>`__ (2022-11-26).
+
+* Transactions on arrays of VCs: ``StreamTransactionArrayPkg``, ``AddressBusTransactionArrayPkg``,
+  ``StreamRecArrayType``, ``AddressBusRecArrayType``; updated multiple-VC example.
+* Interrupt handler example moved to ``Common/TbInterrupt``; new InterruptHandler user guide.
+* Scripts: scoreboard HTML reports for user scoreboards written with ``WriteScoreboardYaml`` (``*_sb_*.yml``).
+* ``AlertLogPkg``: ``SetTestName`` (``SetAlertLogName`` deprecated, kept as alias).
+* Scripts: ``TestName`` replaces ``TestCase`` (kept as wrapper).
+* Default search mode of scoreboards/FIFOs, coverage and memory models changed to ``PRIVATE_NAME``; the 2022.02 default
+  ``NAME_AND_PARENT_ELSE_PRIVATE`` caused unintended sharing in ``for generate``.
 
 .. _RELEASES/2022.10:
 
@@ -559,6 +732,23 @@ The 2024.07 release adds:
 :Released: 2022-11-04
 :Source: `Git tag 2022.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.10>`__
 
+Announced in `OSVVM 2022.10 Release <https://osvvm.org/archives/2086>`__ (2022-11-06).
+
+* New Ethernet PHY and MAC VCs for GMII, RGMII, MII and RMII.
+* New ``InterruptHandler.vhd`` for VCs with Address Bus MIT; ``InterruptHandlerComponentPkg`` via
+  ``OsvvmCommonContext``.
+* ``RandomPkg``: ``SetRandomSalt`` (``string`` or ``integer``) and ``GetRandomSalt`` offset all ``InitSeed``
+  calculations.
+* Multiple-UART demo (``UART/testbench_multiple_uarts``) using ``for generate`` with one ``CentralTestProc``.
+* Support for the NVC simulator.
+* ``AlertLogPkg``: ``SetTestName`` replaces ``SetAlertLogName`` (alias kept).
+* Scripts: errors in red in HTML logs; new ``DoWaves``, ``ChangeWorkingDirectory`` and ``JoinWorkingDirectory``.
+* Scripts: errors in ``wave.do`` caught and ignored (``CallbackOnError_WaveDo``); ``wave.do`` not run in batch mode.
+* GHDL: analyze/simulate output captured in log files; generics on ``simulate`` fixed.
+* Questa: workaround for ``PushBurstRandom``/``CheckBurstRandom`` failures; Questa-Intel notes on stale ``modelsim.ini``
+  mapping and ``vsim`` vs. ``questasim`` logs.
+* ``.gitmodules`` uses relative submodule URLs.
+
 .. _RELEASES/2022.09:
 
 2022.09
@@ -566,6 +756,23 @@ The 2024.07 release adds:
 
 :Released: 2022-09-11
 :Source: `Git tag 2022.09 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.09>`__
+
+Announced in `Announcing Release 2022.09+ <https://osvvm.org/archives/2055>`__ (2022-09-15), details in `Scripts:
+Generics, Waveform Files, and Run Length <https://osvvm.org/archives/2075>`__.
+
+* Scripts CI signaling: ``FailOnBuildErrors`` (default ``true``), ``FailOnReportErrors``, ``FailOnTestCaseErrors``
+  (default ``false``), ``AnalyzeErrorStopCount``, ``SimulateErrorStopCount`` (default ``0``).
+* ``MemoryPkg``: unlimited data width (31-bit limit removed) with bitwise ``X`` fidelity; new ``MemoryPkg_NoX`` (``X`` →
+  ``0``, less storage) and ``MemoryPkg_orig`` (31-bit, original ``X`` policy).
+* Reports: scoreboards as rows of one table; text mini build summary; errors in red in HTML transcripts.
+* Scripts: simulate with two top-level design units.
+* Scripts: ``SetExtendedElaborateOptions``/``SetExtendedRunOptions`` (GHDL); ``SetSaveWaves true`` writes
+  ``<Testbench>.ghw``.
+* Scripts: ``generic`` without quoting, e.g. ``simulate Tb [generic WIDTH 8]``.
+* Scripts: waveform/Tcl files run during ``simulate`` searched by tool, library unit and test case name.
+* Scripts: ``CallbackBefore_<Cmd>``/``CallbackAfter_<Cmd>`` for ``library``, ``build``, ``include``, ``analyze``,
+  ``simulate``; error handling in ``CallbackOnError_<Cmd>``.
+* Scripts: Verilog resource libraries added automatically during ``analyze``.
 
 .. _RELEASES/2022.08b:
 
@@ -599,6 +806,20 @@ The 2024.07 release adds:
 :Released: 2022-07-21
 :Source: `Git tag 2022.06 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.06>`__
 
+Announced in `Announcing OSVVM Release 2022.06 <https://osvvm.org/archives/2025>`__ (2022-07-23).
+
+* Scripts: one-line text build summary at the end of a build.
+* Scripts: files closed when report generation fails.
+* Scripts: text log always created; HTML transcript optional (``SetTranscriptType html``); simulator transcript free of
+  HTML tags.
+* Scripts: ``CreateSimScripts true`` writes the issued simulator commands to a ``.tcl`` file (for vendor bug reports).
+* Scripts (2022.05/2022.06): all analyze/simulate errors caught; ``FailOnBuildErrors``, ``FailOnReportErrors``,
+  ``FailOnTestCaseErrors``, ``AnalyzeErrorStopCount``, ``SimulateErrorStopCount``.
+* ``AlertLogPkg``: new output formatter, e.g. time first, via ``SetAlertLogOptions`` and ``SetAlertLogJustify`` (all
+  AlertLogIDs must exist before ``SetAlertLogJustify``).
+* ``CoveragePkg``: YAML reports ``PASSED``/``FAILED``; ``SetReportOptions(WritePassFail => ENABLED)`` shows it in the
+  HTML test case report.
+
 .. _RELEASES/2022.05d:
 
 2022.05d
@@ -606,6 +827,10 @@ The 2024.07 release adds:
 
 :Released: 2022-06-20
 :Source: `Git tag 2022.05d <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05d>`__
+
+Mentioned in `Announcing OSVVM Release 2022.06 <https://osvvm.org/archives/2025>`__ (2022-07-23).
+
+* Scripts: generics on ``simulate``, e.g. ``simulate Tb [generic a 5]`` (Riviera-PRO, Active-HDL, ModelSim, QuestaSim).
 
 .. _RELEASES/2022.05c:
 
@@ -623,6 +848,16 @@ The 2024.07 release adds:
 :Released: 2022-06-09
 :Source: `Git tag 2022.05b_ <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05b_>`__
 
+.. _RELEASES/2022.05a:
+
+2022.05a
+========
+
+Announced in `Release 2022.05a <https://osvvm.org/archives/2005>`__ (2022-06-06).
+
+* Fix: HTML transcripts from 2022.05 required a newer Tcl version; restores compatibility with older tools such as
+  Riviera-PRO 2018.02.
+
 .. _RELEASES/2022.05:
 
 2022.05
@@ -630,6 +865,13 @@ The 2024.07 release adds:
 
 :Released: 2022-05-31
 :Source: `Git tag 2022.05 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.05>`__
+
+Announced in `Announcing OSVVM Release 2022.05+ <https://osvvm.org/archives/1982>`__ (2022-06-01).
+
+* Scripts: improved error handling; HTML transcripts also for non-GUI tools such as GHDL.
+* Build summary report includes analyze and simulate errors and links to simulator transcripts (log or HTML).
+* Simplified code coverage handling: run, save, merge and report.
+* All VCs define ``MODEL_ID_NAME``; FIFOs use search mode ``PRIVATE`` (unique FIFOs in generate loops).
 
 .. _RELEASES/2022.04:
 
@@ -639,6 +881,11 @@ The 2024.07 release adds:
 :Released: 2022-04-28
 :Source: `Git tag 2022.04 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.04>`__
 
+Announced in `Announcing OSVVM Release 2022.05+ <https://osvvm.org/archives/1982>`__ (2022-06-01).
+
+* New https://osvvm.github.io site and ``OSVVM_Overview.pdf``; updated READMEs.
+* ``Axi4Memory``: delay between words of read burst data.
+
 .. _RELEASES/2022.03:
 
 2022.03
@@ -647,6 +894,15 @@ The 2024.07 release adds:
 :Released: 2022-04-03
 :Source: `Git tag 2022.03 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.03>`__
 
+Announced in `Announcing OSVVM Release 2022.05+ <https://osvvm.org/archives/1982>`__ (2022-06-01).
+
+* New documents: OSVVM Structured Testbench Framework and Verification Component Developer's Guide.
+* Build and test case reports link to transcript files opened with ``TranscriptOpen``.
+* AXI4 Lite: rebased on the AXI4 Full implementation; all GHDL issues resolved.
+* AXI Stream: one burst may span multiple ``SendBurst`` calls.
+* ``TbUtilPkg``: ``EdgeRose``, ``EdgeFell``, ``EdgeActive``, ``FindRisingEdge``, ``FindFallingEdge``,
+  ``FindActiveEdge``.
+
 .. _RELEASES/2022.02:
 
 2022.02
@@ -654,6 +910,13 @@ The 2024.07 release adds:
 
 :Released: 2022-02-24
 :Source: `Git tag 2022.02 <https://github.com/OSVVM/OsvvmLibraries/tree/2022.02>`__
+
+Announced in `Announcing OSVVM Release 2022.02 <https://osvvm.org/archives/1936>`__ (2022-02-25).
+
+* Simulator transcripts written as HTML or text.
+* Test case reports link to the test's section in the HTML transcript.
+* Scoreboard reports in the test case reports.
+* Scripts: optional code coverage collection, merging and HTML reporting, linked from the build report.
 
 .. _RELEASES/2022.01:
 
@@ -693,6 +956,18 @@ The 2024.07 release adds:
 :Released: 2021-11-14
 :Source: `Git tag 2021.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.10>`__
 
+Announced in `OSVVM 2021.10: Build Summary Reports <https://osvvm.org/archives/1879>`__ (2021-11-18) and `OSVVM 2021.10:
+Functional Coverage Reports <https://osvvm.org/archives/1897>`__ (2021-12-07).
+
+* HTML Build Summary Report: hierarchical build, test suite and test case status.
+* HTML test case reports: alerts per AlertLogID and functional coverage (bins shown, settings collapsed).
+* ``EndOfTestReports`` replaces ``ReportAlerts``.
+* YAML intermediate format replaces the CSV test summaries (``WriteTestSummary``, ``ReadTestSummaries``,
+  ``ReportTestSummaries`` from 2020.05).
+* Scripts: ``TestSuite`` and ``TestCase``; ``RunTest`` combines ``analyze`` and ``simulate``.
+* New failure ``NAME_MISMATCH`` when ``TestCase`` and ``SetAlertLogName`` names differ; a test without YAML status is
+  reported as failed.
+
 .. _RELEASES/2021.09:
 
 2021.09
@@ -725,6 +1000,13 @@ The 2024.07 release adds:
 :Released: 2021-03-03
 :Source: `Git tag 2021.02 <https://github.com/OSVVM/OsvvmLibraries/tree/2021.02>`__
 
+Announced in `Announcing OSVVM Release 2021.02 <https://osvvm.org/archives/1799>`__ (2021-03-04).
+
+* Scripts: improved Active-HDL and GHDL support.
+* AXI4 and AXI Stream VCs: valid delays.
+* Multiple driver detection.
+* ``RequestTransaction``/``WaitForTransaction`` for ``integer``.
+
 
 .. _RELEASES/2020:
 
@@ -747,6 +1029,12 @@ The 2024.07 release adds:
 :Released: 2020-12-31
 :Source: `Git tag 2020.12 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.12>`__
 
+Announced in `OSVVM 2020.12: Virtual Transaction Interfaces <https://osvvm.org/archives/1785>`__ (2021-01-11).
+
+* Virtual Transaction Interfaces (entity suffix ``Vti``): ``Axi4MasterVti``, ``Axi4ResponderVti_Transactor``,
+  ``Axi4MemoryVti``, ``AxiStreamTransmitterVti``, ``AxiStreamReceiverVti``.
+* Test harness and test sequencer run the same test cases against VTI components.
+
 .. _RELEASES/2020.10:
 
 2020.10
@@ -754,6 +1042,15 @@ The 2024.07 release adds:
 
 :Released: 2020-11-22
 :Source: `Git tag 2020.10 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.10>`__
+
+Announced in `OSVVM 2020.10: AXI Stream: Bursting + Full Signaling Support <https://osvvm.org/archives/1745>`__
+(2020-11-28).
+
+* ``AxiStreamTransmitter``/``AxiStreamReceiver``: complete AXI Stream signaling and full Stream MIT support.
+* Bursting via burst FIFOs; direct or algorithmic ``TLast`` control for single-word transfers.
+* ``TStrb``/``TKeep`` for single words and bursts, including sparse streams.
+* ``TID``, ``TDest``, ``TUser`` from VC defaults or per transaction; ``TID``/``TDest`` constant within a burst,
+  ``TUser`` per transfer or per word.
 
 .. _RELEASES/2020.08a:
 
@@ -771,6 +1068,14 @@ The 2024.07 release adds:
 :Released: 2020-09-01
 :Source: `Git tag 2020.08 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.08>`__
 
+Announced in `OSVVM 2020.08: Requirements Tracking + Updated Scripting <https://osvvm.org/archives/1700>`__
+(2020-09-03).
+
+* Requirements tracking in ``AlertLogPkg``: ``PASSED``/``FAILED`` via ``AffirmIf``, also by requirement name.
+* ``ReportRequirements`` (test fails on unmet requirements by default), ``WriteRequirements`` (CSV),
+  ``ReadRequirements`` (merge runs), ``ReadSpecification`` (pre-fill requirement bins).
+* Scripts: simulator-independent Tcl API (executable scripts) for Aldec and Mentor simulators.
+
 .. _RELEASES/2020.07:
 
 2020.07
@@ -779,6 +1084,13 @@ The 2024.07 release adds:
 :Released: 2020-07-29
 :Source: `Git tag 2020.07 <https://github.com/OSVVM/OsvvmLibraries/tree/2020.07>`__
 
+Announced in `Announcing OSVVM 2020.07: AXI4 + Model Independent Transactions <https://osvvm.org/archives/1688>`__
+(2020-07-31).
+
+* New AXI4 Full VCs (master, responder, memory) with bursting.
+* AXI4 Lite, AXI Stream and UART VCs use Model Independent Transactions (address bus and stream).
+* AXI4/AXI4 Lite: write address, write data, write response, read address and read data channels operate independently.
+
 .. _RELEASES/2020.05:
 
 2020.05
@@ -786,6 +1098,13 @@ The 2024.07 release adds:
 
 :Released: 2020-05-19
 :Source: `Git tag 2020.05 <https://github.com/OSVVM/OSVVM/tree/2020.05>`__
+
+Announced in `Announcing OSVVM 2020.05 <https://osvvm.org/archives/1647>`__ (2020-05-20).
+
+* ``AlertLogPkg`` tracks ``PASSED`` conditions; ``ReportAlerts`` and ``%%`` lines show passed counts per AlertLogID.
+* ``PASSED`` goals grouped under ``REQUIREMENT_ALERTLOG_ID``.
+* ``SetAlertLogOptions(PrintPassed => DISABLED)`` suppresses per-model passed counts.
+* Updates to ``ScoreboardGenericPkg`` and ``CoveragePkg`` (details in the release notes).
 
 
 .. _RELEASES/2018:
@@ -821,6 +1140,15 @@ The 2024.07 release adds:
 2016
 ****
 
+.. _RELEASES/2016.11a:
+
+2016.11a
+========
+
+Announced in `Announcing OSVVM 2016.11a <https://osvvm.org/archives/1293>`__ (2016-12-16).
+
+* ``VendorCovApiPkg_Aldec.vhd``: attribute bug fixed; works with Riviera-PRO 2016.10.
+
 .. _RELEASES/2016.11:
 
 2016.11
@@ -829,6 +1157,11 @@ The 2024.07 release adds:
 :Released: 2016-12-08
 :Source: `Git tag 2016.11 <https://github.com/OSVVM/OSVVM/tree/2016.11>`__
 
+Announced in `Announcing OSVVM 2016.11 <https://osvvm.org/archives/1251>`__ (2016-12-09).
+
+* New ``VendorCovApiPkg``: forwards coverage model creation and coverage recording to the simulator's coverage database
+  (``VendorCovApiPkg_Aldec.vhd``).
+
 .. _RELEASES/2016.01:
 
 2016.01
@@ -836,6 +1169,11 @@ The 2024.07 release adds:
 
 :Released: 2016-01-26
 :Source: `Git tag 2016.01_Release <https://github.com/OSVVM/OSVVM/tree/2016.01_Release>`__
+
+Announced in `Announcing OSVVM release 2016.01 <https://osvvm.org/archives/1101>`__ (2016-01-26).
+
+* ``AlertLogPkg`` fix: more than 32 AlertLogIDs.
+* ``CoveragePkg``, ``MemoryPkg``, ``TextUtilPkg``: GHDL compatibility (function purity, ``line`` indexing).
 
 
 .. _RELEASES/2015:
@@ -850,12 +1188,43 @@ The 2024.07 release adds:
 
 :Source: `Git tag 2015.06 <https://github.com/OSVVM/OSVVM/tree/2015.06>`__
 
+Announced in `Announcing OSVVM release 2016.01 <https://osvvm.org/archives/1101>`__ (2016-01-26).
+
+* New ``MemoryPkg`` for sparse memory models.
+* ``AlertLogPkg``: ``AffirmIf`` and log level ``PASSED``.
+* ``CoveragePkg``: mirroring for ``WriteBin`` and ``WriteCovHoles``.
+
 .. _RELEASES/2015.03:
 
 2015.03
 =======
 
 :Source: `Git tag 2015.03 <https://github.com/OSVVM/OSVVM/tree/2015.03>`__
+
+Announced in `Announcing OSVVM 2015.03 <https://osvvm.org/archives/948>`__ (2015-03-29).
+
+* ``AlertLogPkg``: ``AlertIfEqual``, ``AlertIfNotEqual``, ``AlertIfDiff`` (files).
+* ``AlertLogPkg``: ``ReadLogEnables``, ``ReportNonZeroAlerts``, ``PathTail``, ``ReportLogEnables``, ``GetAlertLogName``.
+* ``AlertIf``/``AlertIfNot`` overloads with ``AlertLogID`` first (old order deprecated); ``FindAlertLogID`` takes a
+  ``ParentID``.
+* Fixes: ``GetAlertLogID`` no longer shares IDs of equal names; new IDs inherit enables from the parent; ``ClearAlerts``
+  restores stop counts.
+* 2015.01 withdrawn from downloads due to known bugs.
+
+.. _RELEASES/2015.01:
+
+2015.01
+=======
+
+Announced in `Announcing OSVVM 2015.01 <https://osvvm.org/archives/927>`__ (2015-02-05).
+
+* New ``AlertLogPkg``: alerts replace ``assert``; ``FAILURE``/``ERROR``/``WARNING`` counts, enables and stop counts;
+  hierarchical AlertLogIDs; end-of-test report; ``Log`` with verbosity control.
+* All OSVVM packages use alerts instead of ``assert``.
+* New ``TranscriptPkg``: ``TranscriptFile``, ``TranscriptOpen``, ``TranscriptClose``, ``print``, ``writeline``; used by
+  ``AlertLogPkg`` and ``CoveragePkg``.
+* New ``OsvvmGlobalPkg`` for global coverage and alert settings.
+* ``AlertLogPkg`` package body replaceable to map onto other alert packages.
 
 
 .. _RELEASES/2014:
@@ -870,12 +1239,41 @@ The 2024.07 release adds:
 
 :Source: `Git tag 2014.07a <https://github.com/OSVVM/OSVVM/tree/2014.07a>`__
 
+Announced in `OSVVM 2014.07a: Protected Types, Initialized Pointers, and Memory Leaks
+<https://osvvm.org/archives/913>`__ (2014-12-16).
+
+* ``CoveragePkg``: ``deallocate`` frees bin name strings (leak in 2014.07).
+* Coverage models in temporary objects (e.g. subprograms) must be deallocated before exit.
+* ``NamePkg``: pointer initialization conflicted with protected types; ``Get`` returns ``""`` for a ``NULL`` pointer.
+
+.. _RELEASES/2014.07:
+
+2014.07
+=======
+
+Announced in `OSVVM 2014.07 Finally <https://osvvm.org/archives/890>`__ (2014-10-31).
+
+* ``CoveragePkg``: bin names via ``AddBins``/``AddCross`` (for requirements tools); printed by ``WriteBin`` and
+  ``WriteCovHoles``.
+* ``WriteBin`` prints ``PASSED``/``FAILED`` against ``AtLeast``; parameters select the printed fields.
+* ``GenBin(integer_vector)`` creates one bin per value.
+
 .. _RELEASES/2014.01:
 
 2014.01
 =======
 
 :Source: `Git tag 2014.01 <https://github.com/OSVVM/OSVVM/tree/2014.01>`__
+
+Announced in `Announcing OSVVM Release 2014.01 <https://osvvm.org/archives/764>`__ (2014-03-20).
+
+* Examples distributed separately from the library.
+* New ``MessagePkg``; compile order ``MessagePkg``, ``SortListPkg_int``, ``RandomBasePkg``, ``RandomPkg``,
+  ``CoveragePkg``.
+* ``CoveragePkg``: merging of coverage databases, tracking of the last randomization, improved overlapping count bins,
+  improved reporting on Aldec tools.
+* ``RandomPkg``: ``RandTime``, ``RandReal`` for sets; ``RandIntV``, ``RandRealV``, ``RandTimeV``; ``sort``/``revsort``
+  aliases.
 
 
 .. _RELEASES/2013:
@@ -889,3 +1287,31 @@ The 2024.07 release adds:
 =======
 
 :Source: `Git tag 2013.05 <https://github.com/OSVVM/OSVVM/tree/2013.05>`__
+
+Announced in `Announcing OSVVM 2013.05 <https://osvvm.org/archives/648>`__ (2013-05-29).
+
+* ``CoveragePkg``: ``RandCovPoint`` overload returning ``integer`` (per the author's comment on `RandCovPoint for
+  Item/Point coverage <https://osvvm.org/archives/339>`__).
+
+.. _RELEASES/2013.04:
+
+2013.04
+=======
+
+Announced in `Announcing OSVVM Release 2013.04 <https://osvvm.org/archives/579>`__ (2013-04-30).
+
+
+.. _RELEASES/2012:
+
+2012
+****
+
+.. _RELEASES/2.3.1:
+
+2.3.1
+=====
+
+Announced in `OS-VVM Updates <https://osvvm.org/archives/388>`__ (2012-06-22).
+
+* Minor package source updates after DAC 2012 feedback.
+* Simplified ``SENSORS`` example; improved ``FIFO`` testbench syntax.
